@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Página no encontrada" description="La página solicitada no existe en TrainFit." canonicalPath="/404/" noindex>
+  <section class="not-found">
+    <div class="container not-found__inner">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="display">Este registro no existe.</h1>
+      <p class="lede">La URL puede haber cambiado. Vuelve al producto y continúa desde allí.</p>
+      <a class="button button--primary" href="/">Volver a TrainFit</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .not-found { min-height: calc(100svh - var(--header-h)); display: grid; align-items: center; padding-block: 5rem; }
+  .not-found__inner { display: grid; justify-items: start; gap: 2rem; }
+</style>

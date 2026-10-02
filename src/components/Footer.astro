@@ -1,0 +1,63 @@
+---
+import { SITE } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <a class="footer__logo" href="/" aria-label="TrainFit, inicio">
+        <img src="/brand/logo-mark.png" width="40" height="40" alt="" />
+        <span>TrainFit</span>
+      </a>
+      <p>Entrenamiento, nutrición y progreso. Conectados.</p>
+    </div>
+    <nav aria-label="Producto">
+      <p class="footer__label">Producto</p>
+      <a href="/entrenamiento/">Entrenamiento</a>
+      <a href="/nutricion/">Nutrición</a>
+      <a href="/progreso/">Progreso</a>
+      <a href="/entrenadores/">Entrenadores</a>
+    </nav>
+    <nav aria-label="TrainFit">
+      <p class="footer__label">TrainFit</p>
+      <a href="/sobre-trainfit/">Sobre TrainFit</a>
+      <a href="/faq/">Preguntas frecuentes</a>
+      <a href="/descargar/">Descargar</a>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+    <nav aria-label="Legal">
+      <p class="footer__label">Legal</p>
+      <a href="/terminos/">Términos</a>
+      <a href="/privacidad/">Privacidad</a>
+    </nav>
+  </div>
+  <div class="container footer__bottom">
+    <span>© {new Date().getFullYear()} TrainFit</span>
+    <div class="footer__social">
+      <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">Instagram<span class="sr-only"> (abre en nueva pestaña)</span></a>
+      <a href={SITE.socials.tiktok} target="_blank" rel="noreferrer">TikTok<span class="sr-only"> (abre en nueva pestaña)</span></a>
+      <a href={SITE.socials.youtube} target="_blank" rel="noreferrer">YouTube<span class="sr-only"> (abre en nueva pestaña)</span></a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-block: 5rem 2rem; border-top: 1px solid var(--color-border); background: #0c0c0c; }
+  .footer__top { display: grid; gap: 2.5rem; grid-template-columns: 2.2fr repeat(3, 1fr); }
+  .footer__brand { max-width: 23rem; }
+  .footer__logo { display: inline-flex; align-items: center; gap: .7rem; font-size: 1.15rem; font-weight: 720; }
+  .footer__logo img { width: 2.15rem; height: 2.15rem; object-fit: contain; }
+  .footer__brand p { color: var(--color-text-muted); }
+  .footer nav { display: grid; align-content: start; gap: .65rem; }
+  .footer nav a { width: fit-content; color: var(--color-text-soft); font-size: .9rem; }
+  .footer nav a:hover { color: var(--color-text); }
+  .footer__label { margin: 0 0 .35rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+  .footer__bottom { display: flex; justify-content: space-between; gap: 2rem; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: .8rem; }
+  .footer__social { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+  @media (max-width: 48rem) {
+    .footer__top { grid-template-columns: 1fr 1fr; }
+    .footer__brand { grid-column: 1 / -1; }
+    .footer__bottom { align-items: flex-start; flex-direction: column; }
+  }
+</style>

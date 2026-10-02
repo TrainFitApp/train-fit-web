@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../data/site';
+---
+<BaseLayout title="Contacto" description="Contacta con TrainFit para soporte, sugerencias o información sobre TrainFit para entrenadores." canonicalPath="/contacto/">
+  <PageHero eyebrow="Contacto" title="Hablemos de TrainFit." text="Soporte, sugerencias o información profesional. Un único canal, sin formularios innecesarios." />
+  <section class="contact section">
+    <div class="container contact__grid">
+      <a class="contact__primary reveal" href={`mailto:${SITE.email}`}>
+        <span class="metric-label">Correo directo</span>
+        <strong>{SITE.email}</strong>
+        <span aria-hidden="true">↗</span>
+      </a>
+      <div class="contact__social reveal">
+        <p class="eyebrow">También en</p>
+        <a href={SITE.socials.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
+        <a href={SITE.socials.tiktok} target="_blank" rel="noreferrer">TikTok ↗</a>
+        <a href={SITE.socials.youtube} target="_blank" rel="noreferrer">YouTube ↗</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .contact { background: var(--color-surface); }
+  .contact__grid { display: grid; gap: 5rem; grid-template-columns: 1.4fr .6fr; }
+  .contact__primary { display: grid; gap: 1rem; padding-block: 3rem; border-block: 1px solid var(--color-border); grid-template-columns: 1fr auto; }
+  .contact__primary .metric-label { grid-column: 1 / -1; }
+  .contact__primary strong { overflow-wrap: anywhere; font-size: clamp(2rem, 5vw, 5rem); font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+  .contact__primary > span:last-child { align-self: center; color: var(--color-accent); font-size: 2rem; }
+  .contact__social { display: grid; align-content: start; gap: 1rem; }
+  .contact__social a { width: fit-content; color: var(--color-text-soft); font-size: 1.1rem; }
+  .contact__social a:hover { color: var(--color-text); }
+  @media (max-width: 48rem) { .contact__grid { grid-template-columns: 1fr; } }
+</style>

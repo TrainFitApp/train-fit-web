@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../data/site';
+
+const FAQ_ITEMS = [
+  {
+    q: '¿Qué es TrainFit?',
+    a: 'Una app de entrenamiento y nutrición: creas tus rutinas, registras cada serie con peso, repeticiones y RIR, controlas tus calorías y macronutrientes, y ves la evolución de tu progreso en un mismo sitio.',
+  },
+  {
+    q: '¿En qué dispositivos está disponible?',
+    a: [
+      'En iOS y Android. Puedes descargarla desde la ',
+      { text: 'App Store', href: SITE.appStore },
+      ' o desde ',
+      { text: 'Google Play', href: SITE.playStore },
+      '.',
+    ],
+  },
+  {
+    q: '¿Puedo crear mis propias rutinas?',
+    a: 'Sí. Organizas tus días de entrenamiento, eliges los ejercicios de cada uno y defines las series que quieres realizar.',
+  },
+  {
+    q: '¿Cómo se registra el esfuerzo de cada serie?',
+    a: 'Anotas el peso, las repeticiones y el RIR (repeticiones en reserva) de cada serie. Con ese historial puedes comparar sesiones y decidir cuándo progresar.',
+  },
+  {
+    q: '¿Puedo controlar calorías y macronutrientes?',
+    a: 'Sí. Añades alimentos y comidas y la app te muestra cómo encajan en tus calorías y en tus proteínas, carbohidratos y grasas del día.',
+  },
+  {
+    q: '¿Hay una versión para entrenadores?',
+    a: [
+      'Sí. ',
+      { text: 'TrainFit para entrenadores', href: '/entrenadores/' },
+      ' organiza clientes, planificación y seguimiento profesional dentro del mismo ecosistema.',
+    ],
+  },
+  {
+    q: '¿Cómo puedo eliminar mi cuenta o mis datos?',
+    a: [
+      'Escríbenos desde la sección de ',
+      { text: 'contacto', href: '/contacto/' },
+      ' y gestionamos la eliminación de tu cuenta y de tus datos asociados.',
+    ],
+  },
+] as const;
+---
+<BaseLayout title="Preguntas frecuentes" description="Dudas frecuentes sobre TrainFit: rutinas, series, RIR, calorías, macronutrientes y disponibilidad." canonicalPath="/faq/">
+  <PageHero eyebrow="FAQ" title="Preguntas frecuentes." text="Rutinas, series, RIR, calorías, macronutrientes y disponibilidad, explicados sin rodeos." />
+  <section class="faq section--tight">
+    <div class="container faq__list">
+      {FAQ_ITEMS.map((item) => (
+        <details class="faq__item reveal">
+          <summary class="faq__question">
+            <span>{item.q}</span>
+            <span class="faq__plus" aria-hidden="true">+</span>
+          </summary>
+          <p class="faq__answer">
+            {typeof item.a === 'string' ? item.a : item.a.map((part) =>
+              typeof part === 'string' ? part : <a href={part.href} target={part.href.startsWith('http') ? '_blank' : undefined} rel={part.href.startsWith('http') ? 'noreferrer' : undefined}>{part.text}</a>
+            )}
+          </p>
+        </details>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .faq__list { max-width: 48rem; }
+  .faq__item { border-top: 1px solid var(--color-border); }
+  .faq__item:last-child { border-bottom: 1px solid var(--color-border); }
+  .faq__question {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: 1.4rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.1rem;
+    font-weight: 620;
+    letter-spacing: -.015em;
+  }
+  .faq__question::-webkit-details-marker { display: none; }
+  .faq__question > span:first-child { flex: 1; }
+  .faq__plus {
+    color: var(--color-accent);
+    font-size: 1.15rem;
+    transition: transform 250ms var(--ease-out);
+  }
+  .faq__item[open] .faq__plus { transform: rotate(45deg); }
+  .faq__answer {
+    max-width: 58ch;
+    margin: 0 0 1.6rem;
+    color: var(--color-text-soft);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+  .faq__answer a { color: var(--color-accent); text-decoration: underline; text-underline-offset: .2em; }
+  @media (prefers-reduced-motion: reduce) {
+    .faq__plus { transition: none; }
+  }
+</style>

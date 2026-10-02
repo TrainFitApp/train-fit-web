@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductPage from '../../components/ProductPage.astro';
+const screens = [
+  { name: 'nutrition-goals', alt: 'Objetivos de calorías, proteína, carbohidratos y grasas' },
+  { name: 'nutrition-diary', alt: 'Diario de alimentación organizado por comidas' },
+  { name: 'food-search', alt: 'Buscador de alimentos con información nutricional' },
+];
+const items = [
+  { number: '01', title: 'Define tus objetivos', text: 'Establece calorías y distribución de macronutrientes para tu día.' },
+  { number: '02', title: 'Registra tus comidas', text: 'Organiza alimentos por comidas y consulta el progreso frente a tus objetivos.' },
+  { number: '03', title: 'Entiende el conjunto', text: 'Proteína, carbohidratos y grasas permanecen visibles sin convertir el registro en una tabla.' },
+];
+---
+<BaseLayout title="Nutrición, calorías y macronutrientes" description="Registra alimentos y comidas, controla calorías, proteínas, carbohidratos y grasas con TrainFit." canonicalPath="/nutricion/">
+  <ProductPage eyebrow="Nutrición" title="Tu día nutricional, con contexto." intro="Objetivos, comidas y alimentos conectados para que cada registro explique el conjunto." sectionTitle="De un alimento a la visión completa del día." sectionText="Consulta cuánto llevas y qué queda sin perderte entre cálculos o herramientas separadas." screens={screens} items={items} theme="nutrition" />
+</BaseLayout>

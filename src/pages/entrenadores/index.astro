@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<BaseLayout title="TrainFit para entrenadores" description="Organiza clientes, planificación, nutrición y seguimiento profesional dentro del ecosistema TrainFit." canonicalPath="/entrenadores/">
+  <PageHero eyebrow="Para profesionales" title="Acompaña el proceso completo." text="TrainFit para entrenadores extiende el ecosistema con una superficie diseñada para clientes, planificación y seguimiento." />
+  <section class="professional section">
+    <div class="container professional__grid">
+      <div class="professional__intro reveal">
+        <p class="eyebrow">Una vista profesional</p>
+        <h2 class="headline">Tus clientes no son una lista de tareas.</h2>
+        <p class="lede">Entrenamiento, nutrición y check-ins permanecen organizados alrededor de cada persona.</p>
+      </div>
+      <div class="professional__shell reveal" aria-label="Estructura funcional de TrainFit para entrenadores">
+        <div class="shell__top"><span>TrainFit / Entrenadores</span><span>Vista profesional</span></div>
+        <div class="shell__body">
+          <nav aria-label="Ejemplo de navegación profesional"><b>Clientes</b><span>Planificación</span><span>Plantillas</span><span>Check-ins</span></nav>
+          <div class="shell__content">
+            <p class="metric-label">Cliente · Seguimiento</p>
+            <h3>Una lectura conectada del proceso.</h3>
+            <div class="shell__rows"><span>Entrenamiento</span><span>Nutrición</span><span>Evolución</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="capabilities section--tight">
+    <div class="container capabilities__grid">
+      <article class="reveal"><span>01</span><h2>Clientes e invitaciones</h2><p>Organiza relaciones profesionales y accede al contexto de cada cliente.</p></article>
+      <article class="reveal"><span>02</span><h2>Planificación y objetivos</h2><p>Asigna rutinas, pautas y objetivos desde una vista separada de la app personal.</p></article>
+      <article class="reveal"><span>03</span><h2>Seguimiento y check-ins</h2><p>Consulta entrenamiento, nutrición, estadísticas y revisiones dentro del mismo flujo.</p></article>
+    </div>
+  </section>
+  <section class="professional-cta section">
+    <div class="container professional-cta__grid reveal">
+      <div><p class="eyebrow">TrainFit para entrenadores</p><h2>¿Quieres conocer el ecosistema profesional?</h2></div>
+      <div><p>La distribución pública todavía no está disponible. Escríbenos para recibir información verificada.</p><a class="button button--primary" href="mailto:suggestions@trainfit.net?subject=TrainFit%20para%20entrenadores">Contactar con TrainFit</a></div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .professional { background: var(--color-surface); }
+  .professional__grid { display: grid; align-items: center; gap: 5rem; grid-template-columns: .75fr 1.25fr; }
+  .professional__intro .lede { margin-top: 2rem; }
+  .professional__shell { overflow: hidden; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: #111; }
+  .shell__top { display: flex; min-height: 3.5rem; align-items: center; justify-content: space-between; padding-inline: 1.25rem; border-bottom: 1px solid var(--color-border); color: var(--color-text-muted); font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+  .shell__body { display: grid; min-height: 31rem; grid-template-columns: 12rem 1fr; }
+  .shell__body nav { display: grid; align-content: start; gap: .25rem; padding: 1rem; border-right: 1px solid var(--color-border); }
+  .shell__body nav span, .shell__body nav b { padding: .75rem; border-radius: .35rem; color: var(--color-text-muted); font-size: .8rem; font-weight: 500; }
+  .shell__body nav b { background: var(--color-muted); color: var(--color-text); }
+  .shell__content { display: grid; align-content: center; padding: clamp(2rem, 5vw, 4rem); }
+  .shell__content h3 { max-width: 12ch; margin: 1rem 0 3rem; font-size: clamp(2rem, 4vw, 3.6rem); letter-spacing: -.04em; line-height: 1; }
+  .shell__rows { display: grid; border-top: 1px solid var(--color-border); }
+  .shell__rows span { padding: .8rem 0; border-bottom: 1px solid var(--color-border); color: var(--color-text-soft); font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+  .capabilities { border-block: 1px solid var(--color-border); }
+  .capabilities__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .capabilities article { min-height: 20rem; padding: 2rem; border-right: 1px solid var(--color-border); }
+  .capabilities article:first-child { padding-left: 0; }
+  .capabilities article:last-child { border-right: 0; }
+  .capabilities article > span { color: var(--color-accent); font-family: var(--font-mono); font-size: .72rem; }
+  .capabilities h2 { margin: 6rem 0 1rem; font-size: 1.7rem; letter-spacing: -.035em; }
+  .capabilities p { color: var(--color-text-soft); }
+  .professional-cta { background: var(--color-surface); }
+  .professional-cta__grid { display: grid; align-items: end; gap: 4rem; grid-template-columns: 1.2fr .8fr; }
+  .professional-cta h2 { max-width: 13ch; margin: 0; font-size: clamp(2.8rem, 6vw, 6rem); letter-spacing: -.04em; line-height: .96; }
+  .professional-cta__grid > div:last-child { display: grid; justify-items: start; gap: 1.5rem; }
+  .professional-cta__grid > div:last-child p { margin: 0; color: var(--color-text-soft); }
+  @media (max-width: 62rem) { .professional__grid, .professional-cta__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 48rem) {
+    .shell__body { grid-template-columns: 1fr; }
+    .shell__body nav { grid-auto-flow: column; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .capabilities__grid { grid-template-columns: 1fr; }
+    .capabilities article { min-height: auto; padding: 2.5rem 0; border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .capabilities h2 { margin-top: 2.5rem; }
+  }
+</style>

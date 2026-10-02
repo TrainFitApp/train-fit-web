@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import FinalCta from '../../components/FinalCta.astro';
+---
+<BaseLayout title="Sobre TrainFit" description="TrainFit conecta entrenamiento, nutrición y seguimiento del progreso en una experiencia clara y precisa." canonicalPath="/sobre-trainfit/">
+  <PageHero eyebrow="Sobre TrainFit" title="Menos herramientas. Más contexto." text="TrainFit nace para centralizar las áreas que determinan tu proceso: entrenamiento, nutrición y evolución." />
+  <section class="principles section">
+    <div class="container principles__grid">
+      <div class="principles__lead reveal"><p class="eyebrow">Principios de producto</p><h2 class="headline">Diseñado para acompañar el proceso, no para distraerlo.</h2></div>
+      <div class="principles__list">
+        <article class="reveal"><span>01</span><div><h3>Registrar debe ser directo.</h3><p>La interfaz prioriza el dato que necesitas en el momento de entrenar o registrar una comida.</p></div></article>
+        <article class="reveal"><span>02</span><div><h3>Los datos necesitan contexto.</h3><p>Rutinas, objetivos e historial evitan que cada cifra quede aislada.</p></div></article>
+        <article class="reveal"><span>03</span><div><h3>El progreso pertenece al usuario.</h3><p>TrainFit ofrece una lectura conjunta para que cada persona pueda entender su propio proceso.</p></div></article>
+      </div>
+    </div>
+  </section>
+  <FinalCta />
+</BaseLayout>
+<style>
+  .principles { background: var(--color-surface); }
+  .principles__grid { display: grid; gap: 6rem; grid-template-columns: .85fr 1.15fr; }
+  .principles__lead { position: sticky; top: calc(var(--header-h) + 3rem); align-self: start; }
+  .principles__list { border-top: 1px solid var(--color-border); }
+  .principles article { display: grid; min-height: 15rem; align-items: start; padding: 2rem 0; border-bottom: 1px solid var(--color-border); grid-template-columns: .25fr 1.75fr; }
+  .principles article > span { color: var(--color-accent); font-family: var(--font-mono); font-size: .72rem; }
+  .principles h3 { margin: 0 0 1rem; font-size: 1.7rem; letter-spacing: -.035em; }
+  .principles article p { max-width: 30rem; color: var(--color-text-soft); }
+  @media (max-width: 62rem) { .principles__grid { grid-template-columns: 1fr; } .principles__lead { position: static; } }
+</style>

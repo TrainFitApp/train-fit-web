@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloadButton from '../components/DownloadButton.astro';
+import PhoneImage from '../components/PhoneImage.astro';
+---
+
+<BaseLayout title="TrainFit" description="Entrenamiento, nutrición y progreso en una sola app. Planifica, registra y entiende tu evolución con TrainFit." canonicalPath="/">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__layout container">
+      <div class="hero__copy">
+        <h1 id="hero-title"><span>Entrenamiento.</span><span>Nutrición.</span><span>Progreso.</span><strong>Todo conectado.</strong></h1>
+        <p>TrainFit reúne tu planificación, tus comidas y tu evolución para que cada registro tenga contexto.</p>
+        <div class="hero__actions"><DownloadButton /><a class="button button--secondary" href="#sistema">Ver el producto</a></div>
+      </div>
+      <figure class="hero__product">
+        <picture>
+          <source type="image/avif" srcset="/images/hero-480.avif 480w, /images/hero-760.avif 760w, /images/hero-1080.avif 1080w" sizes="(max-width: 768px) 100vw, 58vw" />
+          <source type="image/webp" srcset="/images/hero-480.webp 480w, /images/hero-760.webp 760w, /images/hero-1080.webp 1080w" sizes="(max-width: 768px) 100vw, 58vw" />
+          <img src="/images/hero-1080.webp" width="1080" height="1080" fetchpriority="high" decoding="async" alt="Mockup principal de TrainFit con pantallas reales de entrenamiento, nutrición y progreso" />
+        </picture>
+        <figcaption><span>TrainFit</span><span>iOS + Android</span></figcaption>
+      </figure>
+    </div>
+    <div class="hero__index container" aria-label="Áreas principales de TrainFit"><span>Rutinas y sesiones</span><span>Calorías y macros</span><span>Peso y evolución</span></div>
+  </section>
+
+  <section id="sistema" class="manifesto section">
+    <div class="container manifesto__grid">
+      <h2 class="reveal">Registrar no basta.<br /><em>Hay que entender qué cambia.</em></h2>
+      <div class="manifesto__aside reveal">
+        <p>Una sesión no explica tu progreso. Una comida tampoco. TrainFit conecta las tres áreas que sí lo hacen cuando se leen juntas.</p>
+        <div class="manifesto__signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter training section" aria-labelledby="training-title">
+    <div class="container chapter__heading">
+      <p>Entrenamiento</p>
+      <h2 id="training-title">Del plan a la siguiente repetición.</h2>
+      <div><p>Construye tu rutina, ejecuta cada serie con peso, repeticiones y RIR, y conserva el historial para la próxima sesión.</p><a href="/entrenamiento/">Ver entrenamiento <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="device-reel container" role="region" aria-label="Flujo de entrenamiento en TrainFit" tabindex="0">
+      <figure class="device-shot device-shot--one reveal"><PhoneImage name="workout-summary" alt="Resumen de rutina y sesión activa" class="device" /><figcaption><b>Planifica</b><span>Rutina, días y ejercicios</span></figcaption></figure>
+      <figure class="device-shot device-shot--two reveal"><PhoneImage name="mesocycle" alt="Mesociclo con días y ejercicios organizados" class="device" /><figcaption><b>Organiza</b><span>La estructura antes de entrenar</span></figcaption></figure>
+      <figure class="device-shot device-shot--three reveal"><PhoneImage name="workout-detail" alt="Registro de peso, repeticiones e intensidad durante una serie" class="device" /><figcaption><b>Ejecuta</b><span>Peso, repeticiones y RIR</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="chapter nutrition section" aria-labelledby="nutrition-title">
+    <div class="container nutrition__heading">
+      <h2 id="nutrition-title">Tu día nutricional,<br /><em>sin perder el conjunto.</em></h2>
+      <div><p>Objetivos, comidas y alimentos se leen como un único día, no como una suma de formularios.</p><a href="/nutricion/">Ver nutrición <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="nutrition__reel" role="region" aria-label="Flujo de nutrición en TrainFit" tabindex="0">
+      <figure class="nutrition-shot reveal"><PhoneImage name="nutrition-goals" alt="Objetivos de calorías y distribución de macronutrientes" class="device" /><figcaption><span class="dot dot--protein"></span>Objetivos</figcaption></figure>
+      <figure class="nutrition-shot nutrition-shot--lead reveal"><PhoneImage name="nutrition-diary" alt="Diario nutricional organizado por comidas" class="device" /><figcaption><span class="dot dot--carbs"></span>Tu día</figcaption></figure>
+      <figure class="nutrition-shot reveal"><PhoneImage name="food-search" alt="Búsqueda de alimentos con calorías y macronutrientes" class="device" /><figcaption><span class="dot dot--fat"></span>Alimentos</figcaption></figure>
+    </div>
+    <div class="nutrition__legend container"><span>Proteína</span><span>Carbohidratos</span><span>Grasas</span><strong>Una lectura diaria</strong></div>
+  </section>
+
+  <section class="progress section" aria-labelledby="progress-title">
+    <div class="container progress__grid">
+      <figure class="progress__device reveal"><PhoneImage name="profile-progress" alt="Perfil TrainFit con resumen nutricional y evolución semanal de peso" class="device" /><figcaption>Tu evolución, dentro del mismo sistema.</figcaption></figure>
+      <div class="progress__copy"><h2 id="progress-title">Registrar.<br />Entender.<br /><em>Progresar.</em></h2><p>El valor no está en guardar más datos. Está en poder leer entrenamiento, nutrición y peso como una evolución.</p><a class="button progress__button" href="/progreso/">Explorar progreso</a></div>
+    </div>
+  </section>
+
+  <section class="trainers section" aria-labelledby="trainers-title">
+    <div class="container trainers__heading"><h2 id="trainers-title">El mismo proceso.<br /><em>Otra perspectiva.</em></h2><p>TrainFit para entrenadores organiza clientes, planificación, nutrición y check-ins sin mezclar la experiencia profesional con la personal.</p></div>
+    <div class="container trainers__console reveal">
+      <div class="console__nav"><strong>TrainFit / Entrenadores</strong><span>Vista profesional</span></div>
+      <div class="console__body"><p>Clientes</p><p>Planificación</p><p>Nutrición</p><p>Check-ins</p><p>Seguimiento</p><p>Estadísticas</p></div>
+      <a href="/entrenadores/">Conocer el ecosistema profesional <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="closing section"><div class="container closing__grid"><h2>Tu proceso ya está ocurriendo.<br /><em>Hazlo visible.</em></h2><div><p>Descarga TrainFit en iOS o Android.</p><DownloadButton /></div></div></section>
+</BaseLayout>
+
+<style>
+  :global(body) { background: #0b0b0b; }
+  .hero { position: relative; min-height: calc(100svh - var(--header-h)); overflow: hidden; border-bottom: 1px solid var(--color-border); }
+  .hero__layout { display: grid; min-height: calc(100svh - var(--header-h) - 5.25rem); align-items: center; grid-template-columns: minmax(0, .85fr) minmax(28rem, 1.15fr); }
+  .hero__copy { position: relative; z-index: 2; padding-block: 4rem; }
+  .hero h1 { margin: 0; font-size: clamp(3.5rem, 6.8vw, 6rem); font-weight: 590; letter-spacing: -.04em; line-height: .86; }
+  .hero h1 span, .hero h1 strong { display: block; }
+  .hero h1 strong { margin-top: .18em; color: var(--color-accent); font-weight: 720; }
+  .hero__copy > p { max-width: 32rem; margin: 2rem 0 0; color: var(--color-text-soft); font-size: 1.1rem; }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .hero__product { position: relative; z-index: 1; width: min(59vw, 48rem); margin: 0 -4rem 0 -2rem; justify-self: end; }
+  .hero__product::before { position: absolute; z-index: -1; inset: 8% 5%; border-radius: 50%; background: #171717; content: ''; }
+  .hero__product img { width: 100%; height: auto; }
+  .hero__product figcaption { position: absolute; right: 5%; bottom: 8%; display: flex; gap: 1.5rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; }
+  .hero__index { display: grid; min-height: 5.25rem; align-items: center; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: .72rem; grid-template-columns: repeat(3, 1fr); }
+  .hero__index span { padding-left: 1.25rem; border-left: 1px solid var(--color-border); }
+
+  .manifesto { background: var(--color-paper); color: #121212; }
+  .manifesto__grid { display: grid; align-items: end; gap: clamp(3rem, 8vw, 8rem); grid-template-columns: 1.35fr .65fr; }
+  .manifesto h2 { margin: 0; font-size: clamp(3.4rem, 6.6vw, 6rem); font-weight: 600; letter-spacing: -.04em; line-height: .92; }
+  .manifesto h2 em, .nutrition h2 em, .progress h2 em, .trainers h2 em, .closing h2 em { font-style: normal; font-weight: 300; }
+  .manifesto__aside > p { margin: 0; font-size: 1.1rem; line-height: 1.55; }
+  .manifesto__signal { display: flex; height: 5rem; align-items: end; gap: .35rem; margin-top: 3rem; }
+  .manifesto__signal span { width: .65rem; background: #151515; }
+  .manifesto__signal span:nth-child(1), .manifesto__signal span:nth-child(7) { height: 22%; }
+  .manifesto__signal span:nth-child(2), .manifesto__signal span:nth-child(6) { height: 46%; }
+  .manifesto__signal span:nth-child(3), .manifesto__signal span:nth-child(5) { height: 72%; }
+  .manifesto__signal span:nth-child(4) { height: 100%; background: var(--color-accent); }
+
+  .chapter__heading { display: grid; align-items: end; gap: 3rem; grid-template-columns: .28fr 1.05fr .67fr; }
+  .chapter__heading > p { margin: 0; color: var(--color-accent); font-weight: 650; }
+  .chapter__heading h2, .nutrition__heading h2, .trainers__heading h2 { margin: 0; font-size: clamp(3.2rem, 5.8vw, 5.6rem); font-weight: 600; letter-spacing: -.04em; line-height: .92; }
+  .chapter__heading > div p, .nutrition__heading > div p, .trainers__heading > p { margin: 0 0 1.5rem; color: var(--color-text-soft); }
+  .chapter__heading a, .nutrition__heading a, .trainers__console > a { font-weight: 650; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .35em; }
+
+  .device-reel { display: grid; align-items: end; gap: clamp(1.5rem, 4vw, 4rem); margin-top: clamp(5rem, 10vw, 9rem); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .device-shot { margin: 0; }
+  .device-shot--one { transform: translateY(3rem); }
+  .device-shot--three { transform: translateY(-3rem); }
+  .device-shot :global(.device) { width: min(100%, 20rem); margin-inline: auto; }
+  .device-shot :global(.device img) { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; }
+  .device-shot figcaption { display: grid; gap: .2rem; margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--color-border); }
+  .device-shot figcaption b { font-size: .88rem; }
+  .device-shot figcaption span { color: var(--color-text-muted); font-size: .78rem; }
+
+  .nutrition { overflow: hidden; background: var(--color-paper); color: #111; }
+  .nutrition__heading { display: grid; align-items: end; gap: clamp(3rem, 8vw, 8rem); grid-template-columns: 1.25fr .75fr; }
+  .nutrition__heading > div p { color: #353535; }
+  .nutrition__reel { display: grid; width: min(calc(100% - 2 * var(--gutter)), 80rem); align-items: end; gap: clamp(1rem, 3vw, 3rem); margin: 5rem auto 0; grid-template-columns: repeat(3, 1fr); }
+  .nutrition-shot { margin: 0; }
+  .nutrition-shot--lead { transform: translateY(3rem); }
+  .nutrition-shot :global(.device) { width: min(100%, 20rem); margin-inline: auto; }
+  .nutrition-shot :global(.device img) { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; }
+  .nutrition-shot figcaption { display: flex; align-items: center; gap: .55rem; margin-top: 1rem; font-size: .78rem; font-weight: 650; }
+  .dot { width: .55rem; height: .55rem; border-radius: 50%; }
+  .dot--protein { background: #2677e8; }.dot--carbs { background: #37a866; }.dot--fat { background: #e18a19; }
+  .nutrition__legend { display: grid; margin-top: 7rem; padding-top: 1.25rem; border-top: 1px solid rgba(0,0,0,.25); font-size: .75rem; grid-template-columns: repeat(3, .6fr) 1.2fr; }
+  .nutrition__legend strong { text-align: right; }
+
+  .progress { background: var(--color-accent); color: #111; }
+  .progress__grid { display: grid; align-items: center; gap: clamp(3rem, 9vw, 9rem); grid-template-columns: .72fr 1.28fr; }
+  .progress__device { margin: 0; }.progress__device :global(.device) { width: min(100%, 22rem); margin-inline: auto; }.progress__device :global(.device img) { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; }
+  .progress__device figcaption { margin-top: 1rem; font-size: .78rem; text-align: center; }
+  .progress h2 { margin: 0; font-size: clamp(3.7rem, 8vw, 6rem); font-weight: 670; letter-spacing: -.04em; line-height: .88; }
+  .progress__copy > p { max-width: 34rem; margin: 2.5rem 0; font-size: 1.15rem; }
+  .progress__button { border-color: #111; background: #111; color: #fff; }
+
+  .trainers { background: #111; }
+  .trainers__heading { display: grid; align-items: end; gap: 5rem; grid-template-columns: 1.25fr .75fr; }
+  .trainers__console { margin-top: 5rem; border-block: 1px solid var(--color-border-strong); }
+  .console__nav { display: flex; min-height: 4rem; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--color-border); font-size: .78rem; }
+  .console__nav span { color: var(--color-text-muted); }
+  .console__body { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .console__body p { min-height: 8rem; margin: 0; padding: 1.5rem; border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); color: var(--color-text-soft); }
+  .trainers__console > a { display: inline-flex; padding-block: 1.5rem; }
+
+  .closing { background: #080808; }
+  .closing__grid { display: grid; align-items: end; gap: 5rem; grid-template-columns: 1.4fr .6fr; }
+  .closing h2 { margin: 0; font-size: clamp(3.4rem, 7vw, 6rem); letter-spacing: -.04em; line-height: .92; }
+  .closing__grid > div { display: grid; justify-items: start; gap: 1.5rem; }.closing__grid p { margin: 0; color: var(--color-text-soft); }
+
+  @supports (animation-timeline: view()) {
+    .device-shot, .nutrition-shot, .progress__device { animation: device-enter linear both; animation-timeline: view(); animation-range: entry 5% cover 38%; }
+    @keyframes device-enter { from { opacity: .25; clip-path: inset(14% 0 0 0); transform: translateY(3rem); } to { opacity: 1; clip-path: inset(0); transform: translateY(0); } }
+  }
+  @media (max-width: 62rem) {
+    .hero__layout { grid-template-columns: 1fr; }.hero__copy { padding-bottom: 0; }.hero__product { width: min(100%, 44rem); margin: -2rem auto 0; justify-self: center; }
+    .manifesto__grid, .chapter__heading, .nutrition__heading, .progress__grid, .trainers__heading, .closing__grid { grid-template-columns: 1fr; }
+    .chapter__heading > div, .nutrition__heading > div, .trainers__heading > p { max-width: 36rem; }
+  }
+  @media (max-width: 48rem) {
+    .hero__layout { min-height: auto; }.hero__copy { padding-top: 3rem; }.hero h1 { font-size: clamp(3rem, 13.8vw, 4.25rem); line-height: .88; }.hero__copy > p { font-size: 1rem; }.hero__actions > * { flex: 1 1 9rem; }
+    .hero__product { width: 112vw; margin: -1rem -6vw 0; }.hero__product figcaption { display: none; }.hero__index { min-height: 4.75rem; font-size: .58rem; text-align: center; }.hero__index span { padding: .3rem; }
+    .manifesto h2, .chapter__heading h2, .nutrition__heading h2, .trainers__heading h2, .closing h2 { font-size: clamp(3rem, 13vw, 4.2rem); }
+    .device-reel, .nutrition__reel { display: flex; width: 100%; gap: 1rem; overflow-x: auto; padding: 0 var(--gutter) 1.5rem; scroll-padding-inline: var(--gutter); scroll-snap-type: x mandatory; scrollbar-color: var(--color-accent) transparent; }
+    .device-shot, .nutrition-shot { min-width: 76vw; transform: none; scroll-snap-align: center; }.device-shot :global(.device), .nutrition-shot :global(.device) { width: 100%; }.nutrition__reel { margin-top: 4rem; }
+    .nutrition__legend { grid-template-columns: repeat(3, 1fr); }.nutrition__legend strong { display: none; }
+    .progress__device :global(.device) { width: min(72vw, 20rem); }.progress h2 { font-size: clamp(3.4rem, 15vw, 4.5rem); }
+    .console__body { grid-template-columns: 1fr 1fr; }.console__body p { min-height: 6rem; padding: 1rem; font-size: .82rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .device-shot, .nutrition-shot, .progress__device { animation: none !important; clip-path: none; transform: none; } }
+</style>

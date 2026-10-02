@@ -1,0 +1,29 @@
+---
+import DownloadButton from './DownloadButton.astro';
+interface Props { eyebrow?: string; title?: string; text?: string; }
+const {
+  eyebrow = 'Tu siguiente registro empieza aquí',
+  title = 'Todo tu progreso, en un solo lugar.',
+  text = 'Entrena con intención. Come con contexto. Entiende cómo avanzas.',
+} = Astro.props;
+---
+<section class="final-cta section">
+  <div class="container final-cta__grid reveal">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+    </div>
+    <div class="final-cta__action">
+      <p>{text}</p>
+      <DownloadButton />
+    </div>
+  </div>
+</section>
+<style>
+  .final-cta { border-top: 1px solid var(--color-border); background: var(--color-surface); }
+  .final-cta__grid { display: grid; align-items: end; gap: 3rem; grid-template-columns: 1.45fr .55fr; }
+  .final-cta h2 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 6.8vw, 6rem); font-weight: 620; letter-spacing: -.04em; line-height: .94; }
+  .final-cta__action { display: grid; justify-items: start; gap: 1.5rem; }
+  .final-cta__action p { margin: 0; color: var(--color-text-soft); font-size: 1.08rem; }
+  @media (max-width: 48rem) { .final-cta__grid { grid-template-columns: 1fr; } }
+</style>

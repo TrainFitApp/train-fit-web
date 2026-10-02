@@ -1,0 +1,97 @@
+---
+import PageHero from './PageHero.astro';
+import PhoneImage from './PhoneImage.astro';
+import FinalCta from './FinalCta.astro';
+
+interface Screen { name: string; alt: string; }
+interface Item { number: string; title: string; text: string; }
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  sectionTitle: string;
+  sectionText: string;
+  screens: Screen[];
+  items: Item[];
+  theme?: 'training' | 'nutrition' | 'progress';
+}
+const { eyebrow, title, intro, sectionTitle, sectionText, screens, items, theme = 'training' } = Astro.props;
+---
+
+<PageHero eyebrow={eyebrow} title={title} text={intro} />
+<section class:list={['product-story', `product-story--${theme}`, 'section']} aria-labelledby="product-story-title">
+  <div class="container product-story__intro">
+    <h2 id="product-story-title">{sectionTitle}</h2>
+    <p>{sectionText}</p>
+  </div>
+
+  <div class="container product-story__screens" role="region" aria-label={`Pantallas reales de ${eyebrow.toLowerCase()} en TrainFit`} tabindex="0">
+    {screens.map((screen, index) => (
+      <figure class:list={['product-screen', `product-screen--${index + 1}`]}>
+        <PhoneImage name={screen.name} alt={screen.alt} class="product-phone" />
+        <figcaption><span>{String(index + 1).padStart(2, '0')}</span>{items[index]?.title}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+
+<section class="sequence section--tight" aria-label={`Proceso de ${eyebrow.toLowerCase()}`}>
+  <div class="container sequence__grid">
+    <p class="sequence__label">Un flujo, de principio a fin.</p>
+    <div class="sequence__list">
+      {items.map((item) => (
+        <article class="sequence__item">
+          <span>{item.number}</span>
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<FinalCta />
+
+<style>
+  .product-story { overflow: hidden; }
+  .product-story--nutrition { background: var(--color-paper); color: #111; }
+  .product-story--progress { background: var(--color-accent); color: #111; }
+  .product-story__intro { display: grid; align-items: end; gap: clamp(2rem, 7vw, 7rem); grid-template-columns: 1.25fr .75fr; }
+  .product-story__intro h2 { max-width: 13ch; margin: 0; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 610; letter-spacing: -.04em; line-height: .92; }
+  .product-story__intro p { max-width: 34rem; margin: 0; color: var(--color-text-soft); font-size: 1.08rem; }
+  .product-story--nutrition .product-story__intro p,
+  .product-story--progress .product-story__intro p { color: #333; }
+
+  .product-story__screens { display: grid; align-items: end; gap: clamp(1.5rem, 5vw, 5rem); margin-top: clamp(5rem, 10vw, 9rem); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .product-screen { min-width: 0; margin: 0; }
+  .product-screen--1 { padding-bottom: 3.5rem; }
+  .product-screen--2 { padding-top: 3.5rem; }
+  .product-screen :global(.product-phone) { display: block; width: min(100%, 21rem); margin-inline: auto; }
+  .product-screen :global(.product-phone img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; }
+  .product-screen figcaption { display: flex; gap: 1rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid currentColor; font-size: .8rem; font-weight: 650; }
+  .product-screen figcaption span { opacity: .55; font-variant-numeric: tabular-nums; }
+
+  .sequence { border-block: 1px solid var(--color-border); background: #0b0b0b; }
+  .sequence__grid { display: grid; gap: clamp(3rem, 8vw, 8rem); grid-template-columns: .5fr 1.5fr; }
+  .sequence__label { margin: .35rem 0 0; color: var(--color-accent); font-weight: 700; }
+  .sequence__list { border-top: 1px solid var(--color-border-strong); }
+  .sequence__item { display: grid; align-items: baseline; gap: 1.5rem; padding-block: 2.25rem; border-bottom: 1px solid var(--color-border); grid-template-columns: 3rem minmax(12rem, .8fr) 1.2fr; }
+  .sequence__item span { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+  .sequence__item h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -.035em; line-height: 1; }
+  .sequence__item p { max-width: 35rem; margin: 0; color: var(--color-text-soft); }
+
+  @supports (animation-timeline: view()) {
+    .product-screen { animation: screen-enter linear both; animation-timeline: view(); animation-range: entry 5% cover 38%; }
+    @keyframes screen-enter { from { opacity: .2; clip-path: inset(12% 0 0); transform: translateY(2rem); } to { opacity: 1; clip-path: inset(0); transform: none; } }
+  }
+  @media (max-width: 62rem) {
+    .product-story__intro, .sequence__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 48rem) {
+    .product-story__screens { display: flex; width: 100%; gap: 1rem; overflow-x: auto; padding: 0 var(--gutter) 1.5rem; scroll-padding-inline: var(--gutter); scroll-snap-type: x mandatory; }
+    .product-screen { min-width: 76vw; padding: 0; scroll-snap-align: center; }
+    .product-screen :global(.product-phone) { width: 100%; }
+    .sequence__item { gap: .75rem 1rem; grid-template-columns: 2.5rem 1fr; }
+    .sequence__item p { grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) { .product-screen { animation: none !important; clip-path: none; transform: none; } }
+</style>

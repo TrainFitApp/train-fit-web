@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductPage from '../../components/ProductPage.astro';
+const screens = [
+  { name: 'profile-progress', alt: 'Perfil TrainFit con resumen nutricional y evolución semanal de peso' },
+  { name: 'workout-session', alt: 'Estado de ejercicios completados durante una sesión' },
+  { name: 'nutrition-diary', alt: 'Resumen del día nutricional por comidas' },
+];
+const items = [
+  { number: '01', title: 'Registrar', text: 'Entrenamiento, nutrición y peso forman una base común.' },
+  { number: '02', title: 'Entender', text: 'El historial sitúa cada sesión y cada día dentro de una evolución.' },
+  { number: '03', title: 'Progresar', text: 'Usa ese contexto para ajustar lo siguiente sin depender de intuiciones aisladas.' },
+];
+---
+<BaseLayout title="Seguimiento del progreso" description="Conecta entrenamiento, nutrición y evolución de peso para entender tu progreso con TrainFit." canonicalPath="/progreso/">
+  <ProductPage eyebrow="Progreso" title="Tus datos cuentan una historia." intro="TrainFit no se limita a guardar registros: los mantiene conectados para que puedas interpretar tu evolución." sectionTitle="Tres áreas. Una sola lectura." sectionText="El progreso aparece cuando entrenamiento, nutrición y peso dejan de vivir en lugares distintos." screens={screens} items={items} theme="progress" />
+</BaseLayout>
