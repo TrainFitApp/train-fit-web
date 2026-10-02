@@ -94,16 +94,16 @@ En móvil, los grupos de pantallas pasan a reels horizontales con `scroll-snap`.
 - Dimensiones explícitas: `540 × 960`.
 - Render: `width: 100%`, `height: auto`, `object-fit: contain`.
 - Nunca se fuerza el ancho y el alto simultáneamente ni se recorta una pantalla informativa.
-- AVIF y WebP responsivos a `360w` y `540w` para pantallas individuales.
+- Pantallas reales de la app de usuario con un usuario de demostración independiente (sin entrenador), enmarcadas en un teléfono uniforme sin sombras: canto fino, isla, indicador de inicio y zonas seguras. Fuentes en `images/app` (1080×1920); `npm run optimize:app` genera AVIF (4:4:4) y WebP a `360w`, `540w` y `720w`.
 - Carga diferida fuera del hero y `decoding="async"`.
 - El hero usa variantes responsivas `480w`, `760w` y `1080w`, con prioridad alta.
 
 ### Capturas de TrainFit Trainers
 
 - Pantallas reales de la app de profesionales con clientes y datos de demostración; nunca datos de personas reales. Cada página que las muestra lo indica.
-- Fuentes en `images/trainers`: ventana de 1280×800 y pantalla móvil de 390×700, a 2x. `npm run optimize:trainers` genera AVIF (4:4:4, para que el texto no se emborrone) y WebP.
+- Siempre en vista de ordenador. Fuentes en `images/trainers`: ventana de 1280×800 a 2x. `npm run optimize:trainers` genera AVIF (4:4:4, para que el texto no se emborrone) y WebP.
 - Encuadre `wide` (ventana completa, para presentar la app) y `main` (solo el contenido, sin la barra lateral, para leer cada función a tamaño casi real).
-- `TrainerCapture` sirve la versión móvil de la misma pantalla hasta `48rem`: una ventana de escritorio reducida a un teléfono no se lee.
+- Hasta `48rem`, `TrainerCapture` sirve un recorte de 560×600 de la misma vista de ordenador, centrado en el componente que explica cada función: la ventana entera reducida a un teléfono no se lee.
 - Marco: borde `--color-border-strong`, radio `--radius-md` y fondo negro. Sin cromo de navegador simulado.
 - Cada captura lleva título y explicación en su `figcaption`.
 - Los textos alternativos describen la función mostrada; logos y decoración usan alt vacío.

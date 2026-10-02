@@ -9,27 +9,7 @@ const brand = path.join(root, 'public', 'brand');
 await mkdir(output, { recursive: true });
 await mkdir(brand, { recursive: true });
 
-const mockups = {
-  'MockUpCurrentWorkout.png': 'workout-detail',
-  'MockUpCurrentWorkout2.png': 'workout-session',
-  'MockUpSummary.png': 'workout-summary',
-  'MockUpMesocicle.png': 'mesocycle',
-  'MockUpconfigExercise.png': 'exercise-config',
-  'MockUpSearchExercise.png': 'exercise-search',
-  'MockUpObjetivosNutri.png': 'nutrition-goals',
-  'MockUpDietsl.png': 'nutrition-diary',
-  'MockUpSearchFoods.png': 'food-search',
-  'MockUpPerfil.png': 'profile-progress',
-};
-
-for (const [file, name] of Object.entries(mockups)) {
-  for (const width of [360, 540]) {
-    const image = sharp(path.join(source, file)).resize({ width, withoutEnlargement: true });
-    await image.clone().avif({ quality: 65, effort: 6 }).toFile(path.join(output, `${name}-${width}.avif`));
-    await image.clone().webp({ quality: 78, effort: 6 }).toFile(path.join(output, `${name}-${width}.webp`));
-  }
-}
-
+// Las pantallas de la app (images/app) se optimizan con scripts/optimize-app-captures.mjs.
 const heroSource = path.join(source, 'MockUpHeaderHeo.png');
 for (const width of [480, 760, 1080]) {
   const image = sharp(heroSource).resize({ width, withoutEnlargement: true });

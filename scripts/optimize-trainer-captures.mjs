@@ -2,10 +2,10 @@ import { mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
 
-// Capturas de TrainFit Trainers. Fuentes en images/trainers: ventana de
-// escritorio de 1280×800 y pantalla móvil de 390×700, ambas a 2x. Son interfaz
-// con texto pequeño: AVIF sin submuestreo de croma para que el texto de color
-// no se emborrone.
+// Capturas de TrainFit Trainers, siempre en vista de ordenador. Fuentes en
+// images/trainers: ventana de escritorio de 1280×800 a 2x. Son interfaz con
+// texto pequeño: AVIF sin submuestreo de croma para que el texto de color no se
+// emborrone.
 const root = process.cwd();
 const source = path.join(root, 'images', 'trainers');
 const output = path.join(root, 'public', 'images', 'trainers');
@@ -23,6 +23,17 @@ const captures = {
   checkin: 'main',
   automation: 'main',
 };
+// En móvil la ventana entera no se lee: se sirve un recorte de la misma vista
+// de ordenador centrado en el componente que explica cada función (px CSS).
+const crops = {
+  today: { left: 284, top: 62 },
+  client: { left: 284, top: 56 },
+  planner: { left: 284, top: 76 },
+  diets: { left: 284, top: 80 },
+  checkin: { left: 300, top: 30 },
+  automation: { left: 284, top: 80 },
+};
+const crop = { width: 560, height: 600 };
 
 async function write(image, file) {
   await image.clone().avif({ quality: 62, effort: 6, chromaSubsampling: '4:4:4' }).toFile(`${file}.avif`);
@@ -36,8 +47,10 @@ for (const [name, frameName] of Object.entries(captures)) {
   for (const width of [frame.width, frame.width * 2]) {
     await write(sharp(desktopBuffer).resize({ width }), path.join(output, `${name}-${frameName}-${width}`));
   }
-  for (const width of [390, 780]) {
-    await write(sharp(path.join(source, `${name}-mobile.png`)).resize({ width }), path.join(output, `${name}-mobile-${width}`));
+  const { left, top } = crops[name];
+  const detail = await sharp(path.join(source, `${name}-desktop.png`)).extract({ left: left * 2, top: top * 2, width: crop.width * 2, height: crop.height * 2 }).png().toBuffer();
+  for (const width of [420, 840]) {
+    await write(sharp(detail).resize({ width }), path.join(output, `${name}-crop-${width}`));
   }
 }
 
