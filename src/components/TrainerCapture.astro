@@ -1,0 +1,33 @@
+---
+// Captura real de TrainFit Trainers (ver scripts/optimize-trainer-captures.mjs).
+// Hasta 48rem se sirve la misma pantalla en el diseño móvil de la app, legible
+// en un teléfono; a partir de ahí, el encuadre de escritorio: «wide» es la
+// ventana completa y «main» solo el área de contenido, sin la barra lateral.
+interface Props {
+  name: string;
+  alt: string;
+  frame?: 'wide' | 'main';
+  loading?: 'eager' | 'lazy';
+  sizes?: string;
+  class?: string;
+}
+const { name, alt, frame = 'main', loading = 'lazy', sizes = '(max-width: 80rem) 100vw, 73.75rem', class: className } = Astro.props;
+const width = frame === 'wide' ? 1280 : 1012;
+const base = `/images/trainers/${name}`;
+const mobile = '(max-width: 48rem)';
+---
+<picture class:list={['trainer-capture', className]}>
+  <source media={mobile} type="image/avif" width="390" height="700" sizes="22rem" srcset={`${base}-mobile-390.avif 390w, ${base}-mobile-780.avif 780w`} />
+  <source media={mobile} type="image/webp" width="390" height="700" sizes="22rem" srcset={`${base}-mobile-390.webp 390w, ${base}-mobile-780.webp 780w`} />
+  <source type="image/avif" sizes={sizes} srcset={`${base}-${frame}-${width}.avif ${width}w, ${base}-${frame}-${width * 2}.avif ${width * 2}w`} />
+  <source type="image/webp" sizes={sizes} srcset={`${base}-${frame}-${width}.webp ${width}w, ${base}-${frame}-${width * 2}.webp ${width * 2}w`} />
+  <img src={`${base}-${frame}-${width}.webp`} width={width} height="800" alt={alt} loading={loading} decoding="async" fetchpriority={loading === 'eager' ? 'high' : undefined} />
+</picture>
+
+<style>
+  .trainer-capture { display: block; overflow: hidden; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: #000; }
+  .trainer-capture img { display: block; width: 100%; height: auto; }
+  @media (max-width: 48rem) {
+    .trainer-capture { width: min(100%, 22rem); margin-inline: auto; border-radius: 1.25rem; }
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import { NAV_ITEMS, SITE } from '../data/site';
+import { NAV_ITEMS } from '../data/site';
 const path = Astro.url.pathname;
 ---
 
@@ -18,13 +18,7 @@ const path = Astro.url.pathname;
           <a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
         ))}
       </div>
-      <a
-        class="button button--primary site-nav__cta"
-        href="/descargar/"
-        data-download-trigger
-        data-app-store={SITE.appStore}
-        data-play-store={SITE.playStore}
-      >Descargar</a>
+      <a class="button button--primary site-nav__cta" href="/descargar/" aria-current={path.startsWith('/descargar/') ? 'page' : undefined}>Descargar</a>
     </nav>
   </div>
 </header>

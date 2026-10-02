@@ -15,6 +15,14 @@ export const SITE = {
   },
 } as const;
 
+// TrainFit Trainers es la herramienta de los profesionales (web aparte de la
+// app). Su dominio público aún no está configurado, así que el único recorrido
+// válido hoy es escribir a TrainFit: no se enlaza ni a registro ni a acceso.
+export const TRAINERS = {
+  name: 'TrainFit Trainers',
+  contactHref: `mailto:${SITE.email}?subject=${encodeURIComponent('Acceso a TrainFit Trainers')}`,
+} as const;
+
 export const NAV_ITEMS = [
   { href: '/entrenamiento/', label: 'Entrenamiento' },
   { href: '/nutricion/', label: 'Nutrición' },

@@ -1,34 +1,121 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { SITE } from '../../data/site';
+import PhoneImage from '../../components/PhoneImage.astro';
+import { SITE, TRAINERS } from '../../data/site';
+
+const screens = [
+  { name: 'workout-detail', alt: 'Registro de peso, repeticiones y RIR durante una serie', label: 'Registra cada serie' },
+  { name: 'nutrition-diary', alt: 'Diario nutricional organizado por comidas', label: 'Apunta tus comidas' },
+  { name: 'profile-progress', alt: 'Perfil con resumen nutricional y evolución semanal de peso', label: 'Sigue tu evolución' },
+];
 ---
-<BaseLayout title="Descargar TrainFit" description="Descarga TrainFit para iOS o Android y conecta entrenamiento, nutrición y progreso." canonicalPath="/descargar/">
-  <section class="download-page">
-    <div class="container download-page__grid">
-      <div class="download-page__copy reveal is-visible">
-        <p class="eyebrow">Disponible en iOS y Android</p>
-        <h1 class="display">Tu proceso empieza en la app.</h1>
-        <p class="lede">Elige tu plataforma y descarga TrainFit desde su tienda oficial.</p>
-        <div class="download-page__stores">
-          <a href={SITE.appStore} target="_blank" rel="noreferrer"><img src="/images/store-apple.webp" width="198" height="58" alt="Descargar TrainFit en App Store" /></a>
-          <a href={SITE.playStore} target="_blank" rel="noreferrer"><img src="/images/store-google.webp" width="200" height="58" alt="Descargar TrainFit en Google Play" /></a>
+<BaseLayout title="Descargar TrainFit" description="Descarga gratis la app TrainFit para iOS y Android: rutinas, series, comidas y progreso en tu móvil." canonicalPath="/descargar/">
+  <section class="get" aria-labelledby="get-title">
+    <div class="container get__grid">
+      <div class="get__copy">
+        <p class="eyebrow">App TrainFit · iOS y Android</p>
+        <h1 id="get-title" class="get__title">Descarga TrainFit en tu móvil.</h1>
+        <p class="lede">La app para quien entrena: planifica tus rutinas, registra cada serie con peso, repeticiones y RIR, apunta lo que comes y sigue tu evolución en un mismo sitio.</p>
+        <div class="get__stores" data-stores>
+          <a class="get__store" data-store="ios" href={SITE.appStore} target="_blank" rel="noreferrer">
+            <img src="/images/store-apple.webp" width="198" height="58" alt="Descargar en el App Store" />
+            <span class="sr-only"> (abre en una pestaña nueva)</span>
+          </a>
+          <a class="get__store" data-store="android" href={SITE.playStore} target="_blank" rel="noreferrer">
+            <img src="/images/store-google.webp" width="200" height="58" alt="Disponible en Google Play" />
+            <span class="sr-only"> (abre en una pestaña nueva)</span>
+          </a>
         </div>
+        <p class="get__note">Descarga gratuita desde la tienda oficial de tu móvil.</p>
+        <p class="get__desktop">¿Estás en el ordenador? Abre <strong>trainfit.net/descargar</strong> en tu móvil o busca «TrainFit» en su tienda.</p>
       </div>
-      <picture class="download-page__visual reveal is-visible">
-        <source type="image/avif" srcset="/images/hero-480.avif 480w, /images/hero-760.avif 760w" sizes="(max-width: 768px) 90vw, 50vw" />
-        <img src="/images/hero-760.webp" width="760" height="760" alt="Pantallas de la aplicación TrainFit" />
-      </picture>
+
+      <div class="get__screens" role="group" aria-label="Pantallas reales de la app TrainFit">
+        {screens.map((screen, index) => (
+          <figure class:list={['get__screen', `get__screen--${index + 1}`]}>
+            <PhoneImage name={screen.name} alt={screen.alt} loading="eager" sizes="(max-width: 48rem) 30vw, 14rem" />
+            <figcaption>{screen.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="audience section--tight" aria-labelledby="audience-title">
+    <div class="container audience__grid">
+      <h2 id="audience-title" class="subhead">¿Para quién es la app?</h2>
+      <dl class="audience__list">
+        <div>
+          <dt>Entrenas por tu cuenta</dt>
+          <dd>Montas tus rutinas y tu dieta, registras cada sesión y cada comida, y ves cómo cambia tu peso semana a semana.</dd>
+        </div>
+        <div>
+          <dt>Te entrena un profesional</dt>
+          <dd>Si tu entrenador o nutricionista trabaja con {TRAINERS.name}, lo que te pauta (rutinas, dietas, hábitos y check-ins) aparece en la pestaña Coach de tu app. Mientras dure la relación, no verás anuncios.</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="container audience__pro">
+      <p><strong>¿Eres entrenador o nutricionista?</strong> Esta app es la de tus clientes. Tú trabajas desde {TRAINERS.name}, una herramienta aparte.</p>
+      <a class="link-arrow" href="/entrenadores/">Conocer {TRAINERS.name}</a>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // En el móvil, la tienda que corresponde va primero. Sin JS se ven las dos igual.
+  const stores = document.querySelector<HTMLElement>('[data-stores]');
+  const ua = navigator.userAgent;
+  const platform = /Android/i.test(ua) ? 'android' : /iPhone|iPad|iPod/i.test(ua) ? 'ios' : null;
+  if (stores && platform) stores.dataset.platform = platform;
+</script>
+
 <style>
-  .download-page { min-height: calc(100svh - var(--header-h)); display: grid; align-items: center; padding-block: clamp(4rem, 9vw, 8rem); overflow: clip; }
-  .download-page__grid { display: grid; align-items: center; gap: 3rem; grid-template-columns: .9fr 1.1fr; }
-  .download-page__copy .lede { margin-top: 2rem; }
-  .download-page__stores { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
-  .download-page__stores a { border-radius: .5rem; transition: transform 140ms ease; }
-  .download-page__stores a:hover { transform: translateY(-2px); }
-  .download-page__stores img { width: auto; height: 3.5rem; }
-  .download-page__visual { width: min(58vw, 46rem); }
-  @media (max-width: 62rem) { .download-page__grid { grid-template-columns: 1fr; } .download-page__visual { width: min(95vw, 42rem); justify-self: center; } }
+  .get { padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(4rem, 8vw, 7rem); overflow: clip; border-bottom: 1px solid var(--color-border); }
+  .get__grid { display: grid; align-items: center; gap: clamp(3rem, 5vw, 4.5rem); grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+  .get__title { max-width: 11ch; margin: 0; font-size: clamp(3rem, 6vw, 5.25rem); font-weight: 620; letter-spacing: -.04em; line-height: .94; }
+  .get__copy .lede { margin-top: 1.75rem; }
+  .get__stores { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
+  .get__store { display: block; border-radius: .6rem; outline-offset: 4px; box-shadow: 0 0 0 1px var(--color-border-strong); transition: transform 140ms var(--ease-standard), box-shadow 140ms var(--ease-standard); }
+  .get__store img { width: auto; height: 3.6rem; border-radius: .6rem; }
+  .get__stores[data-platform='android'] [data-store='android'],
+  .get__stores[data-platform='ios'] [data-store='ios'] { order: -1; }
+  .get__note { margin: 1.25rem 0 0; color: var(--color-text-soft); font-size: .92rem; }
+  .get__desktop { display: none; max-width: 30rem; margin: 2rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: .88rem; }
+  .get__desktop strong { color: var(--color-text); font-weight: 620; }
+
+  .get__screens { display: grid; align-items: end; gap: clamp(.75rem, 2vw, 1.5rem); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .get__screen { min-width: 0; margin: 0; }
+  .get__screen--2 { padding-bottom: 2.5rem; }
+  .get__screen :global(img) { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: contain; }
+  .get__screen figcaption { margin-top: .75rem; padding-top: .6rem; border-top: 1px solid var(--color-border); color: var(--color-text-soft); font-size: .78rem; font-weight: 600; }
+
+  .audience { background: var(--color-surface); }
+  .audience__grid { display: grid; gap: clamp(2rem, 6vw, 6rem); grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+  .audience__grid h2 { max-width: 12ch; }
+  .audience__list { margin: 0; border-top: 1px solid var(--color-border-strong); }
+  .audience__list > div { display: grid; gap: .5rem 2rem; padding-block: 1.75rem; border-bottom: 1px solid var(--color-border); grid-template-columns: minmax(10rem, .7fr) 1.3fr; }
+  .audience__list dt { font-size: 1.15rem; font-weight: 650; letter-spacing: -.02em; }
+  .audience__list dd { margin: 0; color: var(--color-text-soft); }
+  .audience__pro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: clamp(3rem, 6vw, 5rem); padding: 1.5rem 0 0; border-top: 1px solid var(--color-border); }
+  .audience__pro p { max-width: 40rem; margin: 0; color: var(--color-text-soft); }
+  .audience__pro strong { color: var(--color-text); }
+
+
+  @media (hover: hover) and (pointer: fine) {
+    .get__store:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(255,255,255,.45); }
+    .get__desktop { display: block; }
+  }
+  @media (max-width: 62rem) {
+    .get__grid, .audience__grid { grid-template-columns: minmax(0, 1fr); }
+    .get__screens { width: min(100%, 34rem); }
+  }
+  @media (max-width: 48rem) {
+    .get { padding-top: 2.5rem; }
+    .get__title { font-size: clamp(2.75rem, 12.5vw, 4rem); }
+    .get__store img { height: 2.85rem; }
+    .get__screen--2 { padding-bottom: 1.25rem; }
+    .get__screen figcaption { font-size: .68rem; }
+    .audience__list > div { grid-template-columns: minmax(0, 1fr); }
+  }
 </style>

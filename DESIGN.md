@@ -9,7 +9,7 @@ La narrativa visual sigue el producto:
 1. Entrenamiento: planificar y ejecutar.
 2. Nutrición: entender el día completo.
 3. Progreso: registrar, entender y progresar.
-4. Entrenadores: leer el mismo proceso desde una perspectiva profesional.
+4. Entrenadores: leer el mismo proceso desde una perspectiva profesional, en TrainFit Trainers.
 
 Los mockups reales son contenido, no decoración. El texto explica el contexto; las pantallas demuestran la funcionalidad.
 
@@ -65,18 +65,18 @@ El naranja no es un fondo recurrente ni un recurso decorativo. Se reserva para l
 - Altura del header: `4.75rem`; `4.25rem` en móvil.
 - Unidad de espaciado conceptual: 4 px. Los valores fluidos preservan ese ritmo en los tres tamaños.
 
-Los bordes son finos y estructurales. No se usan sombras para separar secciones; la única sombra amplia pertenece al diálogo modal, donde comunica elevación real.
+Los bordes son finos y estructurales. No se usan sombras para separar secciones ni elementos.
 
 ## Layout y ritmo editorial
 
 El sistema parte de una retícula de 12 columnas, pero cada capítulo la interpreta de forma distinta:
 
-- Hero asimétrico: mensaje editorial y `MockUpHeaderHeo` dominante.
+- Hero en dos columnas: mensaje editorial y `MockUpHeaderHeo` en su propia columna, sin márgenes negativos ni solapes. El titular se dimensiona contra su columna (`min(6rem, 14.2cqi)`: «Entrenamiento.» mide 6,8 em) y la imagen se limita a `min(100%, 36rem, 62svh)`. En tablet y móvil la imagen pasa debajo del texto (30rem / 24rem).
 - Manifiesto en papel: afirmación amplia + explicación compacta.
 - Entrenamiento: encabezado a tres columnas y secuencia de dispositivos escalonada.
 - Nutrición: capítulo claro y reel de tres pantallas.
 - Progreso: composición binaria sobre naranja, con el producto frente a un titular secuencial.
-- Entrenadores: consola lineal B2B, sin simular una aplicación ni inventar datos.
+- Entrenadores: captura real de TrainFit Trainers, tres puntos lineales y enlace a `/entrenadores/`, que desarrolla cada función con su captura.
 - Cierre: titular amplio y una única acción.
 
 Breakpoints implementados:
@@ -97,6 +97,15 @@ En móvil, los grupos de pantallas pasan a reels horizontales con `scroll-snap`.
 - AVIF y WebP responsivos a `360w` y `540w` para pantallas individuales.
 - Carga diferida fuera del hero y `decoding="async"`.
 - El hero usa variantes responsivas `480w`, `760w` y `1080w`, con prioridad alta.
+
+### Capturas de TrainFit Trainers
+
+- Pantallas reales de la app de profesionales con clientes y datos de demostración; nunca datos de personas reales. Cada página que las muestra lo indica.
+- Fuentes en `images/trainers`: ventana de 1280×800 y pantalla móvil de 390×700, a 2x. `npm run optimize:trainers` genera AVIF (4:4:4, para que el texto no se emborrone) y WebP.
+- Encuadre `wide` (ventana completa, para presentar la app) y `main` (solo el contenido, sin la barra lateral, para leer cada función a tamaño casi real).
+- `TrainerCapture` sirve la versión móvil de la misma pantalla hasta `48rem`: una ventana de escritorio reducida a un teléfono no se lee.
+- Marco: borde `--color-border-strong`, radio `--radius-md` y fondo negro. Sin cromo de navegador simulado.
+- Cada captura lleva título y explicación en su `figcaption`.
 - Los textos alternativos describen la función mostrada; logos y decoración usan alt vacío.
 
 El escalonado vertical crea una lectura secuencial sin inclinar ni deformar dispositivos. En móvil se elimina el escalonado y cada mockup conserva su relación de aspecto completa.
@@ -123,7 +132,7 @@ Header sticky, contraste oscuro y estado actual mediante una línea naranja. En 
 
 ### Descarga
 
-En móvil se abre directamente la tienda correcta. En escritorio se usa un `<dialog>` nativo con cierre explícito, Escape, backdrop, restauración de foco y enlaces reales a App Store y Google Play.
+Todos los accesos de descarga llevan a `/descargar/`, una página propia con URL compartible: qué app es y para quién, enlaces reales a App Store y Google Play y pantallas reales para reconocerla. En iOS y Android la tienda del dispositivo pasa a ir primera; sin JS se ven las dos igual. En escritorio se indica la URL corta para abrirla desde el móvil. No hay diálogo modal.
 
 ## Motion
 
@@ -147,7 +156,7 @@ Con `prefers-reduced-motion: reduce`, el scroll suave se desactiva, los reveals 
 - Regiones y reels informativos etiquetados mediante `aria-label`.
 - Objetivos táctiles mínimos de 48 px.
 - Contraste WCAG AA sobre fondos oscuros, papel y naranja.
-- Navegación por teclado en menú y diálogo.
+- Navegación por teclado en menú y enlaces de tienda.
 - Contenido legible y funcional sin motion.
 - Imágenes informativas con alt descriptivo; decoración ignorada por tecnologías asistivas.
 

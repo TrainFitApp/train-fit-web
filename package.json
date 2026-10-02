@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "typecheck": "astro check",
     "test:e2e": "npm run build && playwright test",
-    "optimize:assets": "node scripts/optimize-assets.mjs"
+    "optimize:assets": "node scripts/optimize-assets.mjs",
+    "optimize:trainers": "node scripts/optimize-trainer-captures.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",

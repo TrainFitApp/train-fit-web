@@ -1,12 +1,5 @@
 ---
-import { SITE } from '../data/site';
-interface Props { label?: string; secondary?: boolean; }
-const { label = 'Descargar TrainFit', secondary = false } = Astro.props;
+interface Props { label?: string; secondary?: boolean; class?: string; }
+const { label = 'Descargar TrainFit', secondary = false, class: className } = Astro.props;
 ---
-<a
-  class:list={['button', secondary ? 'button--secondary' : 'button--primary']}
-  href="/descargar/"
-  data-download-trigger
-  data-app-store={SITE.appStore}
-  data-play-store={SITE.playStore}
->{label}</a>
+<a class:list={['button', secondary ? 'button--secondary' : 'button--primary', className]} href="/descargar/">{label}</a>
