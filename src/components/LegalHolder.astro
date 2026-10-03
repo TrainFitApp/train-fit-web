@@ -1,0 +1,22 @@
+---
+// Identificación del titular en las páginas legales. Lo que falte se ve como pendiente.
+import { LEGAL } from '../data/site';
+const pending = (value: string) => value || 'pendiente de completar';
+---
+
+<dl class="legal-holder">
+  <div><dt>Titular</dt><dd>{LEGAL.holder} ({LEGAL.holderType})</dd></div>
+  <div><dt>NIF</dt><dd class:list={{ pending: !LEGAL.nif }}>{pending(LEGAL.nif)}</dd></div>
+  <div><dt>Domicilio</dt><dd class:list={{ pending: !LEGAL.address }}>{pending(LEGAL.address)}</dd></div>
+  <div><dt>Contacto</dt><dd><a href={`mailto:${LEGAL.supportEmail}`}>{LEGAL.supportEmail}</a></dd></div>
+</dl>
+
+<style>
+  .legal-holder { display: grid; gap: .5rem; margin: 1.25rem 0 0; }
+  .legal-holder div { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1rem; }
+  .legal-holder dt { color: var(--color-text-muted); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em;
+    text-transform: uppercase; padding-top: .2rem; }
+  .legal-holder dd { margin: 0; color: var(--color-text-soft); overflow-wrap: anywhere; }
+  .legal-holder dd.pending { color: var(--color-accent); }
+  @media (max-width: 30rem) { .legal-holder div { grid-template-columns: 1fr; gap: .15rem; } }
+</style>

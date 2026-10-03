@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { TRAINERS_TERMS } from '../../data/site';
+
+// Historial de versiones: la vigente primero. Cada versión conserva su URL para siempre.
+const versions = [...TRAINERS_TERMS.versions].reverse();
+---
+
+<BaseLayout
+  title="Condiciones de contratación de TrainFit Trainers"
+  description="Versión vigente e historial de las condiciones de contratación de TrainFit Trainers."
+  canonicalPath="/condiciones-trainers/"
+>
+  <div class="legal-page">
+    <header class="legal-header container">
+      <h1>Condiciones de contratación de TrainFit Trainers</h1>
+      <p class="legal-meta">Cada versión se publica en su propia dirección y no se modifica después.</p>
+    </header>
+    <article class="legal-document container">
+      <section>
+        <h2>Versiones</h2>
+        <ul class="legal-versions">
+          {versions.map((version) => (
+            <li>
+              <a href={version.path}>Versión {version.label}</a>
+              <span>{version.id === TRAINERS_TERMS.current ? 'Vigente' : 'Anterior'} · En vigor: {version.effective}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

@@ -4,7 +4,8 @@ import { SITE } from '../src/data/site';
 
 const routes = [
   '/', '/entrenamiento/', '/nutricion/', '/progreso/', '/entrenadores/',
-  '/descargar/', '/sobre-trainfit/', '/contacto/', '/terminos/', '/privacidad/',
+  '/descargar/', '/sobre-trainfit/', '/contacto/', '/terminos/', '/privacidad/', '/aviso-legal/',
+  '/condiciones-trainers/', '/condiciones-trainers/2026-10/',
 ];
 
 for (const route of routes) {

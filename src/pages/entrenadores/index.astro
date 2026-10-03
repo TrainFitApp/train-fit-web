@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TrainerCapture from '../../components/TrainerCapture.astro';
-import { TRAINERS } from '../../data/site';
+import { TRAINERS, TRAINERS_TERMS_PATH } from '../../data/site';
 
 const features = [
   {
@@ -153,6 +153,7 @@ const more = [
       <div class="pro-cta__action">
         <p>{TRAINERS.name} todavía no tiene alta pública. Escríbenos y te contamos cómo empezar.</p>
         <a class="button button--primary" href={TRAINERS.contactHref}>Solicitar acceso</a>
+        <p class="pro-cta__client">Planes, plazas y precios: <a href={TRAINERS_TERMS_PATH}>condiciones de contratación</a>.</p>
         <p class="pro-cta__client">¿Eres cliente de un entrenador? <a href="/descargar/">Descarga la app TrainFit</a>.</p>
       </div>
     </div>

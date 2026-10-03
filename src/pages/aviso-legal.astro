@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalHolder from '../components/LegalHolder.astro';
+import { TRAINERS_TERMS_PATH } from '../data/site';
+---
+
+<BaseLayout
+  title="Aviso legal"
+  description="Titular de TrainFit y condiciones de uso de la web trainfit.net."
+  canonicalPath="/aviso-legal/"
+>
+  <div class="legal-page">
+    <header class="legal-header container">
+      <h1>Aviso legal</h1>
+      <p class="legal-review-note" role="note">Borrador pendiente de revisión legal.</p>
+    </header>
+
+    <article class="legal-document container">
+      <section>
+        <h2>Titular</h2>
+        <p>En cumplimiento de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico, el titular de esta web, de la app TrainFit y de TrainFit Trainers es:</p>
+        <LegalHolder />
+      </section>
+
+      <section>
+        <h2>Uso de la web</h2>
+        <p>Esta web presenta TrainFit y TrainFit Trainers. Su uso es gratuito y no requiere registro. Te comprometes a usarla conforme a la ley y sin dañar su funcionamiento.</p>
+      </section>
+
+      <section>
+        <h2>Propiedad intelectual</h2>
+        <p>Los textos, imágenes, capturas, marcas y el diseño de esta web pertenecen a su titular o se usan con autorización. No pueden reproducirse ni distribuirse sin permiso, salvo los usos que permita la ley.</p>
+      </section>
+
+      <section>
+        <h2>Condiciones aplicables</h2>
+        <ul>
+          <li><p>El uso de la app TrainFit se rige por los <a href="/terminos/">términos y condiciones</a>.</p></li>
+          <li><p>La suscripción de TrainFit Trainers se rige por las <a href={TRAINERS_TERMS_PATH}>condiciones de contratación de TrainFit Trainers</a>.</p></li>
+          <li><p>El tratamiento de datos personales se explica en la <a href="/privacidad/">política de privacidad</a>.</p></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Enlaces</h2>
+        <p>Los enlaces a sitios de terceros, como las tiendas de aplicaciones o las redes sociales, se ofrecen por comodidad. No somos responsables de su contenido.</p>
+      </section>
+
+      <section>
+        <h2>Ley aplicable</h2>
+        <p>Este aviso legal se rige por la ley española.</p>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

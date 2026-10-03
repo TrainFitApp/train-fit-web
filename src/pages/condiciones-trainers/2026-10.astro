@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalHolder from '../../components/LegalHolder.astro';
+import { LEGAL, TRAINERS_TERMS } from '../../data/site';
+
+// Versión 2026-10. Una versión publicada no se edita: los cambios van en una página nueva
+// (/condiciones-trainers/AAAA-MM/) porque la facturación guarda qué URL aceptó cada entrenador.
+const version = TRAINERS_TERMS.versions.find((entry) => entry.id === '2026-10')!;
+const isCurrent = TRAINERS_TERMS.current === version.id;
+---
+
+<BaseLayout
+  title="Condiciones de contratación de TrainFit Trainers"
+  description="Condiciones de la suscripción de TrainFit Trainers: planes, plazas de clientes, renovación, cambios, cancelación y reembolsos."
+  canonicalPath={version.path}
+>
+  <div class="legal-page">
+    <header class="legal-header container">
+      <h1>Condiciones de contratación de TrainFit Trainers</h1>
+      <p class="legal-meta">Versión {version.label} · En vigor: {version.effective}{!isCurrent && ' · Versión anterior'}</p>
+      <p class="legal-review-note" role="note">Borrador pendiente de revisión legal. No se aplica hasta su publicación.</p>
+    </header>
+
+    <article class="legal-document container">
+      <section>
+        <h2>1. Quién presta el servicio</h2>
+        <p>TrainFit Trainers es la herramienta de TrainFit para entrenadores personales y nutricionistas. El servicio lo presta:</p>
+        <LegalHolder />
+        <p>Los pagos de la suscripción los procesa y factura Stripe a través de Link, que actúa como vendedor registrado: calcula y cobra el IVA que corresponda, emite la factura y gestiona el cobro. Durante el pago se muestran también las condiciones de Link. Para dudas sobre cobros y facturas puedes escribirnos a <a href={`mailto:${LEGAL.billingEmail}`}>{LEGAL.billingEmail}</a>.</p>
+      </section>
+
+      <section>
+        <h2>2. A quién se dirige</h2>
+        <p>TrainFit Trainers se contrata para la actividad profesional de entrenamiento, nutrición o seguimiento de clientes. Al contratarlo declaras que lo haces en el marco de esa actividad. Nada de estas condiciones limita los derechos que la ley reconozca a quien contrate como consumidor.</p>
+      </section>
+
+      <section>
+        <h2>3. Qué incluye</h2>
+        <p>Todos los planes incluyen las mismas funciones: pautar rutinas y dietas, revisar check-ins, vídeos de técnica, fotos de progreso, seguimiento de adherencia y registro de los cobros que gestionas con tus clientes. Los planes se diferencian solo por el número de plazas de clientes y por el espacio de la biblioteca de vídeos (apartado 11).</p>
+        <p>El registro de cobros a tus clientes es solo un registro: TrainFit no cobra, no mueve ni custodia el dinero que te pagan tus clientes.</p>
+      </section>
+
+      <section>
+        <h2>4. Planes y precios</h2>
+        <p>Precios en euros, sin IVA. El IVA se añade al pagar según tu país y tu condición fiscal.</p>
+        <div class="legal-table" role="region" aria-label="Planes y precios" tabindex="0">
+          <table>
+            <thead>
+              <tr><th scope="col">Plan</th><th scope="col">Plazas incluidas</th><th scope="col">Cuota</th><th scope="col">Plaza adicional</th><th scope="col">Máximo de plazas</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Free</th><td>3</td><td>0 €</td><td>3 € al mes</td><td>12</td></tr>
+              <tr><th scope="row">Inicio</th><td>20</td><td>29 € al mes o 290 € al año</td><td>1 € al mes o 10 € al año</td><td>40</td></tr>
+              <tr><th scope="row">Profesional</th><td>50</td><td>49 € al mes o 490 € al año</td><td>0,80 € al mes o 8 € al año</td><td>125</td></tr>
+              <tr><th scope="row">Escala</th><td>150</td><td>109 € al mes o 1.090 € al año</td><td>No incluye</td><td>150</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul>
+          <li><p>Usar Free con sus 3 plazas no requiere contratar nada. Si añades plazas a Free, contratas una suscripción mensual por el importe de esas plazas.</p></li>
+          <li><p>Las plazas adicionales de Free solo se contratan al mes. En Inicio y Profesional, las plazas adicionales tienen la misma periodicidad que la cuota.</p></li>
+          <li><p>El pago anual equivale a diez mensualidades y se cobra de una vez al inicio de cada año. No es una mensualidad: la renovación se puede cancelar, pero el año pagado no se devuelve salvo en los casos del apartado 9.</p></li>
+          <li><p>Para más de 150 clientes preparamos una oferta a medida. No existe una capacidad ilimitada.</p></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>5. Qué es una plaza</h2>
+        <ul>
+          <li><p>Pagas por las plazas que contratas, no por el uso: una plaza contratada se paga aunque no esté ocupada, y reducir clientes no reduce por sí solo las plazas contratadas.</p></li>
+          <li><p>Una persona ocupa una sola plaza contigo aunque trabajéis entrenamiento y nutrición.</p></li>
+          <li><p>Una invitación pendiente reserva una plaza hasta que la persona la acepta, la rechaza o la cancelas.</p></li>
+          <li><p>Invitar a un cliente nunca contrata plazas ni genera un cargo. Si no te quedan plazas libres, la aplicación te lo dice y puedes ampliar a sabiendas.</p></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Contratación</h2>
+        <p>Contratas desde la página de Suscripción de TrainFit Trainers, eligiendo plan, periodicidad y plazas. Antes de pagar ves la cuota y el importe recurrente. El pago se realiza en la página segura de Stripe, donde se te pide aceptar estas condiciones. La suscripción empieza cuando el pago se confirma; volver de la página de pago sin completarlo no activa nada.</p>
+      </section>
+
+      <section>
+        <h2>7. Renovación</h2>
+        <p>La suscripción se renueva automáticamente al final de cada periodo, mensual o anual, por el importe vigente de lo que tengas contratado, hasta que canceles la renovación. En los planes anuales te avisamos por correo y en la aplicación 30 y 7 días antes de renovar, con la fecha y el importe previsto.</p>
+      </section>
+
+      <section>
+        <h2>8. Cambios de plan y de plazas</h2>
+        <p>Antes de confirmar cualquier cambio ves una propuesta calculada por Stripe con el importe a pagar ahora, el próximo importe recurrente, la fecha de renovación y cuándo se aplica. La propuesta es válida durante unos minutos; si caduca o algo cambia, se calcula de nuevo. Al confirmarla aceptas las condiciones vigentes en ese momento.</p>
+        <ul>
+          <li><p><strong>Añadir plazas mensuales:</strong> se aplican al momento. La parte proporcional del periodo en curso se suma a tu próxima factura; ese día no se cobra nada.</p></li>
+          <li><p><strong>Añadir plazas anuales, pasar a un plan superior o pasar de mensual a anual:</strong> se cobra en el momento la parte proporcional, descontando el tiempo no usado de lo que tenías, y se aplica cuando el pago se confirma. Dentro de la misma periodicidad la fecha de renovación no cambia; al pasar de mensual a anual, la propuesta te indica la nueva fecha.</p></li>
+          <li><p><strong>Quitar plazas, pasar a un plan inferior o pasar de anual a mensual:</strong> se aplica en la siguiente renovación. Hasta entonces conservas lo que pagaste y no hay reembolso del periodo en curso.</p></li>
+          <li><p>Cuando un plan llega a su máximo de plazas te recomendamos el siguiente, indicando si cuesta lo mismo o más. Nunca cambiamos tu plan sin que lo confirmes.</p></li>
+          <li><p>Si un pago requiere autenticación adicional o falla, el cambio queda pendiente y conservas lo que ya tenías pagado. Puedes completar el pago o descartar el cambio.</p></li>
+          <li><p>Los importes los calcula Stripe y se redondean al céntimo. Si un importe es inferior al mínimo que Stripe puede cobrar, se suma a tu siguiente factura; no se cobra en ningún otro concepto.</p></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>9. Cancelación, solo lectura y reembolsos</h2>
+        <p>Puedes cancelar la renovación en cualquier momento desde la página de Suscripción, sin tener que contactarnos. Conservas lo contratado hasta el final del periodo pagado y después pasas a Free, con 3 plazas.</p>
+        <p>Si en algún momento tienes más clientes que plazas (al cancelar, al reducir plazas, al bajar de plan o tras un impago), no se borra nada:</p>
+        <ul>
+          <li><p>Eliges qué clientes siguen activos, hasta el número de plazas que tengas. Mientras no elijas, siguen activos los más antiguos.</p></li>
+          <li><p>El resto queda en solo lectura: puedes consultar su información, pero no modificarla.</p></li>
+          <li><p>Puedes cambiar la elección una vez cada 30 días; la primera elección es libre.</p></li>
+          <li><p>Las invitaciones pendientes que no quepan no se cancelan, pero no pueden aceptarse hasta que haya una plaza libre.</p></li>
+        </ul>
+        <p>Cancelar o reducir no da derecho a reembolso del periodo ya pagado. Reembolsamos en estos casos:</p>
+        <ul>
+          <li><p>Cobros duplicados o incorrectos, y cobros posteriores a una cancelación ya efectiva.</p></li>
+          <li><p>Incumplimiento relevante del servicio por nuestra parte.</p></li>
+          <li><p>Renovación anual no deseada: puedes pedir el reembolso en los 7 días naturales siguientes a la renovación. Es una concesión comercial y no limita los derechos que te reconozca la ley.</p></li>
+          <li><p>Cuando la ley lo exija.</p></li>
+        </ul>
+        <p>Pide los reembolsos a <a href={`mailto:${LEGAL.billingEmail}`}>{LEGAL.billingEmail}</a>. Si se reembolsa una ampliación o una subida de plan, vuelves a lo que tenías antes de ella, sin nuevos cargos. Link puede además gestionar reembolsos de acuerdo con sus propias condiciones.</p>
+      </section>
+
+      <section>
+        <h2>10. Pagos fallidos y disputas</h2>
+        <p>Si falla el cobro de una renovación, Stripe lo reintenta y conservas tu plan durante 7 días. Si en ese plazo no se cobra, pasas a Free y se aplica lo descrito en el apartado 9 sobre clientes en solo lectura.</p>
+        <p>Si abres una disputa o un contracargo sobre un pago, pausamos los cobros futuros mientras se resuelve y mantenemos tu acceso. Si la disputa termina con la devolución del pago, se retiran solo los derechos que ese pago financiaba (por ejemplo, el periodo o la ampliación pagados con él). No aplicamos bloqueos permanentes salvo fraude o abuso documentado.</p>
+      </section>
+
+      <section>
+        <h2>11. Fotos, vídeos y almacenamiento</h2>
+        <ul>
+          <li><p>La biblioteca de vídeos de técnica del profesional tiene un espacio según el plan: 2 GB en Free, 10 GB en Inicio, 25 GB en Profesional y 75 GB en Escala. Contratar plazas adicionales no amplía este espacio.</p></li>
+          <li><p>Cada vídeo puede ocupar hasta 1 GB y durar hasta 3 minutos.</p></li>
+          <li><p>Los vídeos de técnica que te envían tus clientes se borran a los 90 días salvo que se marquen para conservar. Cada cliente puede enviar hasta 5 a la semana.</p></li>
+          <li><p>Si pasas a un plan con menos espacio, no se borra lo que ya tienes, pero no podrás subir más vídeos hasta liberar espacio o volver a un plan mayor.</p></li>
+          <li><p>Las fotos y vídeos de progreso son de cada cliente: los sube y los controla desde su propia cuenta de TrainFit.</p></li>
+          <li><p>Podremos establecer límites razonables de almacenamiento adicionales. Te avisaremos con al menos 30 días de antelación y nunca borraremos archivos sin aviso previo.</p></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>12. Tus clientes y sus datos</h2>
+        <p>Cada cliente tiene su propia cuenta de TrainFit, acepta tu invitación y decide qué comparte contigo, según el ámbito de la relación (entrenamiento o nutrición). Te comprometes a usar sus datos solo para prestarle tus servicios profesionales y conforme a la normativa de protección de datos. Cómo tratamos los datos se explica en la <a href="/privacidad/">política de privacidad</a>.</p>
+      </section>
+
+      <section>
+        <h2>13. Cambios en los precios y en estas condiciones</h2>
+        <p>Si cambiamos los precios o estas condiciones, publicaremos la nueva versión en su propia dirección y te avisaremos con al menos 30 días de antelación. Los nuevos precios se aplican desde tu siguiente renovación, y puedes cancelar antes si no estás de acuerdo. Cuando confirmes una nueva contratación o un cambio, aceptarás la versión vigente en ese momento. Las versiones anteriores siguen disponibles en <a href="/condiciones-trainers/">el historial de condiciones</a>.</p>
+      </section>
+
+      <section>
+        <h2>14. Suspensión y baja</h2>
+        <p>Podemos suspender una cuenta en caso de fraude, abuso o incumplimiento grave de estas condiciones, informando del motivo salvo que la ley lo impida. Puedes darte de baja y eliminar tu cuenta desde la aplicación; al hacerlo se cancela la suscripción sin reembolso implícito del periodo en curso.</p>
+      </section>
+
+      <section>
+        <h2>15. Responsabilidad</h2>
+        <p>Trabajamos para que el servicio esté disponible y funcione correctamente, pero no garantizamos que esté libre de interrupciones o errores. Las pautas de entrenamiento y nutrición que prescribes a tus clientes son tu responsabilidad profesional. Nada de lo anterior limita la responsabilidad que no pueda limitarse según la ley.</p>
+      </section>
+
+      <section>
+        <h2>16. Ley aplicable</h2>
+        <p>Estas condiciones se rigen por la ley española. Para cualquier duda o reclamación, escríbenos primero a <a href={`mailto:${LEGAL.billingEmail}`}>{LEGAL.billingEmail}</a> e intentaremos resolverlo de forma amistosa.</p>
+      </section>
+    </article>
+  </div>
+</BaseLayout>

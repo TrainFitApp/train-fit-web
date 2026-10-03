@@ -1,89 +1,114 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalHolder from '../components/LegalHolder.astro';
+import { LEGAL } from '../data/site';
 ---
 
 <BaseLayout
   title="Política de privacidad"
-  description="Consulta cómo TrainFit recopila, utiliza, comparte y protege la información de sus usuarios."
+  description="Qué datos trata TrainFit, para qué, con qué base, con quién se comparten, cuánto tiempo se guardan y cómo ejercer tus derechos."
   canonicalPath="/privacidad/"
 >
   <div class="legal-page">
     <header class="legal-header container">
-      <p class="eyebrow">Información legal</p>
-      <h1>Política y privacidad de TrainFit</h1>
-      <p class="legal-review-note" role="note">Documento pendiente de revisión legal</p>
+      <h1>Política de privacidad de TrainFit</h1>
+      <p class="legal-meta">Se aplica a la app TrainFit, a TrainFit Trainers y a esta web.</p>
+      <p class="legal-review-note" role="note">Borrador pendiente de revisión legal.</p>
     </header>
 
     <article class="legal-document container">
       <section>
-        <h2>Acerca de TrainFit y esta Política</h2>
-        <p>Esta Política de privacidad explica cuándo recopilamos información sobre el usuario, incluida la 'Información personal', qué información recopilamos, por qué la recopilamos, cómo la utilizamos, con quién la compartimos, dónde se procesa, cómo la gestionamos y las opciones y los derechos legales del usuario asociados a esta información.</p>
+        <h2>1. Responsable</h2>
+        <p>El responsable del tratamiento de tus datos es:</p>
+        <LegalHolder />
+        <p>Para cualquier cuestión de privacidad o para ejercer tus derechos, escribe a <a href={`mailto:${LEGAL.supportEmail}`}>{LEGAL.supportEmail}</a>.</p>
       </section>
 
       <section>
-        <h2>Alcance de esta Política</h2>
-        <p>TrainFit y sus empresas filiales controlan la información recopilada cuando el usuario interactúa con la aplicación TrainFit a través de nuestros servicios (en lo sucesivo, los'Servicios').</p>
-      </section>
-
-      <section>
-        <h2>Información que recopilamos o recibimos</h2>
-        <h3>Qué datos recopilamos acerca del usuario</h3>
-        <p>Recopilamos y recibimos información sobre el usuario por diferentes medios, como se describe a continuación.</p>
-
-        <h3>Información que nos proporciona el usuario</h3>
-        <p>Recopilamos información que nos proporciona directamente el usuario; por ejemplo, al introducirla en nuestra aplicación o incluirla en un formulario que nos envíe. Este tipo de recopilación suele producirse a través de procesos como:</p>
+        <h2>2. Qué datos tratamos</h2>
         <ul>
-          <li><p>Procesos de registro o creación de una cuenta en TrainFit, en los que se pide al usuario que proporcione información como nombre, dirección de correo electrónico, fecha de nacimiento y preferencias de ejercicio y nutrición.</p></li>
-          <li><p>Procesos de asistencia técnica y atención al cliente, en los que podemos pedir al usuario que proporcione información de contacto e información relacionada con el problema por el que se ha puesto en contacto con nosotros.</p></li>
-          <li><p>Otros procesos empresariales, en los que podemos pedir al usuario que proporcione información como el nombre, la dirección de correo electrónico y preferencias de ejercicio y nutrición si participa en encuestas, concursos, promociones o eventos.</p></li>
+          <li><p><strong>Cuenta:</strong> nombre, apellidos, correo electrónico, fecha de nacimiento y contraseña cifrada, o la identidad que facilite Google o Apple si inicias sesión con ellos.</p></li>
+          <li><p><strong>Perfil físico y objetivos:</strong> sexo, peso, altura, nivel de actividad, tipo de entrenamiento y objetivo.</p></li>
+          <li><p><strong>Entrenamiento y nutrición:</strong> rutinas, series registradas, comidas, dietas, hábitos, medidas corporales, check-ins, molestias o dolor que indiques y respuestas a los cuestionarios de tu profesional, incluidas alergias o preferencias alimentarias.</p></li>
+          <li><p><strong>Fotos y vídeos:</strong> fotos y vídeos de progreso y vídeos de técnica que subas, y vídeos de técnica que suba un profesional a su biblioteca.</p></li>
+          <li><p><strong>Relación con un profesional:</strong> invitaciones, ámbito de la relación (entrenamiento o nutrición), notas que el profesional escriba sobre su trabajo contigo y el registro de los cobros que gestione contigo fuera de TrainFit.</p></li>
+          <li><p><strong>Suscripciones:</strong> en la app, el estado de tu suscripción premium que comunican Apple o Google; en TrainFit Trainers, el plan, las plazas y el estado de los pagos. Nunca vemos ni guardamos los datos completos de tu tarjeta.</p></li>
+          <li><p><strong>Datos técnicos:</strong> registros del servidor, identificadores de sesión y, en la app gratuita, los identificadores publicitarios que use el proveedor de anuncios según tu consentimiento.</p></li>
+          <li><p><strong>Comunicaciones:</strong> los mensajes que nos envíes por correo o desde la aplicación.</p></li>
         </ul>
-
-        <h3>Recopilación automática de información</h3>
-        <p>También podemos recopilar de forma automática o pasiva información sobre el uso que haga el usuario de nuestra aplicación; se deben consultar las subsecciones siguientes para obtener una lista de las categorías de fuentes de dicha información.</p>
-        <p>La información que recopilamos de los dispositivos puede incluir:</p>
-        <p>Cada vez que el usuario utiliza TrainFit, podemos registrar la actividad del usuario en nuestros servidores. Por ejemplo, podemos recibir identificadores del dispositivo, información sobre los ejercicios realizados y las preferencias de alimentación introducidas.</p>
+        <p>Parte de estos datos se refieren a tu salud o a tu físico (peso, medidas, molestias, fotos de progreso). Los tratamos con especial cuidado y solo con tu consentimiento explícito.</p>
       </section>
 
       <section>
-        <h2>Uso de la información</h2>
-        <h3>Cómo usamos los datos que recopilamos</h3>
-        <p>En esta sección se explica cómo utilizamos la información personal que recopilamos sobre el usuario.</p>
-        <p>Utilizaremos la información personal del usuario únicamente por determinados motivos específicos y solo cuando tengamos la base legal para hacerlo. Las bases legales que nos respaldan dependen del tipo de relación que tengamos con el usuario y de cómo interactuemos con él.</p>
-        <h3>Entre estos fines, se incluyen:</h3>
+        <h2>3. Para qué y con qué base</h2>
         <ul>
-          <li><p>Proporcionar nuestros productos y servicios al usuario, como entrenamientos personalizados y planes de alimentación.</p></li>
-          <li><p>Mejorar nuestros productos y servicios, como analizar los datos de ejercicio y nutrición para ofrecer recomendaciones más precisas.</p></li>
-          <li><p>Detectar y prevenir el uso no autorizado de nuestra aplicación y garantizar la seguridad de la cuenta del usuario.</p></li>
+          <li><p><strong>Prestarte el servicio</strong> (registrar tu entrenamiento y nutrición, mostrarte tu progreso, gestionar tu cuenta): ejecución del contrato que aceptas al registrarte.</p></li>
+          <li><p><strong>Datos de salud, fotos y vídeos:</strong> tu consentimiento explícito. La primera vez que vas a hacer o subir una foto o un vídeo te explicamos cómo se guardan y quién los ve, y te pedimos que marques una casilla aparte, que nunca viene marcada. Si cambiamos ese texto, te lo volvemos a pedir. Puedes retirar el consentimiento borrando esos datos o tu cuenta.</p></li>
+          <li><p><strong>Compartir tus datos con tu profesional:</strong> tu consentimiento al aceptar su invitación, limitado al ámbito de la relación. Puedes ocultarle días concretos, decidir si ve tu historial anterior y terminar la relación cuando quieras.</p></li>
+          <li><p><strong>Cobros de la suscripción de TrainFit Trainers:</strong> ejecución del contrato y cumplimiento de obligaciones fiscales.</p></li>
+          <li><p><strong>Anuncios en la app gratuita:</strong> tu consentimiento para los anuncios personalizados, que puedes cambiar en Ajustes. Sin él, los anuncios no se personalizan. Quien tiene premium o un profesional activo no ve anuncios.</p></li>
+          <li><p><strong>Seguridad y prevención del fraude:</strong> interés legítimo en proteger el servicio y a sus usuarios.</p></li>
+          <li><p><strong>Correos del servicio</strong> (verificación, avisos de renovación, invitaciones): ejecución del contrato.</p></li>
         </ul>
+        <p>No vendemos tus datos ni tomamos decisiones automatizadas con efectos jurídicos sobre ti.</p>
       </section>
 
       <section>
-        <h2>Intercambio y transferencias de información</h2>
-        <h3>Dónde y con quién compartimos los datos del usuario</h3>
-        <p>En esta sección se explica cómo podemos compartir la información que recopilamos con terceros que nos prestan servicios o proporcionan los datos que utiliza el usuario en TrainFit. No aceptamos ni aceptaremos dinero a cambio de compartir información personal.</p>
-        <h3>Podemos compartir la información del usuario con los siguientes destinatarios y para los siguientes fines:</h3>
+        <h2>4. Qué ve tu profesional</h2>
+        <p>Si aceptas la invitación de un entrenador o nutricionista, ve la información del ámbito de vuestra relación: lo que registras desde que empezó la relación, salvo los días que ocultes, y lo anterior solo si se lo compartes. Los nutricionistas ven tus fotos de progreso pero no tus vídeos de técnica. El profesional usa esos datos para prestarte sus servicios y responde de ese uso. El personal de administración de TrainFit no ve tus fotos ni tus vídeos.</p>
+      </section>
+
+      <section>
+        <h2>5. Con quién los compartimos</h2>
+        <p>Solo con los proveedores que necesitamos para prestar el servicio, que tratan los datos por cuenta nuestra y bajo contrato:</p>
         <ul>
-          <li><p>Proveedores de servicios: compartimos información con proveedores de servicios de TrainFit, que son personas o empresas que prestan servicios que pueden incluir el análisis de datos de ejercicio y nutrición.</p></li>
-          <li><p>Socios: podemos compartir información con socios que ofrecen servicios adicionales relacionados con el fitness y la nutrición.</p></li>
-          <li><p>Otros usuarios: cuando el usuario interactúa con otros usuarios dentro de TrainFit, puede compartir cierta información como el progreso del ejercicio y los logros alcanzados.</p></li>
+          <li><p>MongoDB (base de datos), Hetzner y Render (servidores).</p></li>
+          <li><p>Cloudflare (almacenamiento de fotos, alojamiento de la web de TrainFit Trainers y correo entrante) y Bunny.net (almacenamiento y reproducción de vídeos).</p></li>
+          <li><p>Resend y Amazon Web Services (envío de correos del servicio).</p></li>
+          <li><p>Stripe y Link (cobro y facturación de TrainFit Trainers; Link actúa como vendedor registrado de la suscripción).</p></li>
+          <li><p>RevenueCat, Apple y Google (suscripciones de la app y compras dentro de la app).</p></li>
+          <li><p>Google y Apple (inicio de sesión, si lo eliges) y Google AdMob (anuncios en la app gratuita).</p></li>
+          <li><p>Vercel (alojamiento de esta web).</p></li>
+        </ul>
+        <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo. Cuando ocurre, lo hacen con las garantías que exige el Reglamento General de Protección de Datos, como las cláusulas contractuales tipo de la Comisión Europea o el Marco de Privacidad de Datos UE-EE. UU.</p>
+        <p>También comunicaremos datos a autoridades cuando la ley nos obligue.</p>
+      </section>
+
+      <section>
+        <h2>6. Cuánto tiempo los guardamos</h2>
+        <ul>
+          <li><p>Los datos de tu cuenta, mientras la mantengas. Al eliminarla se borran tus datos y los asociados a ella.</p></li>
+          <li><p>Los vídeos de técnica enviados a un profesional, 90 días salvo que se marquen para conservar.</p></li>
+          <li><p>Las fotos y vídeos de progreso, hasta que los borres o elimines tu cuenta.</p></li>
+          <li><p>Los datos de facturación, el tiempo que exija la normativa fiscal y mercantil.</p></li>
+          <li><p>Al terminar la relación con un profesional, deja de tener acceso a tus datos. Las notas que escribió sobre su trabajo contigo se conservan en su cuenta.</p></li>
         </ul>
       </section>
 
       <section>
-        <h2>Gestión de la información y opciones del usuario</h2>
-        <h3>Cómo almacenamos los datos y los derechos del usuario</h3>
-        <p>En TrainFit tratamos de mantener medidas de seguridad adecuadas para proteger la información del usuario contra el acceso no autorizado o la modificación. Además, nos esforzamos por garantizar que el usuario tenga opciones sobre cómo se recopila, utiliza, almacena y comparte su información.</p>
-        <p>El usuario puede consultar, modificar o eliminar parte de su información desde los ajustes de la cuenta dentro de TrainFit. También puede ejercer sus derechos, como el derecho de acceso, rectificación, eliminación y restricción, contactándonos a través de la aplicación TrainFit.</p>
+        <h2>7. Tus derechos</h2>
+        <p>Puedes acceder a tus datos, rectificarlos, suprimirlos, oponerte a su tratamiento, limitarlo, pedir su portabilidad y retirar tu consentimiento en cualquier momento, sin que afecte a lo tratado antes. Muchos de estos derechos los puedes ejercer desde la propia aplicación; para el resto, escribe a <a href={`mailto:${LEGAL.supportEmail}`}>{LEGAL.supportEmail}</a>.</p>
+        <p>Si crees que no hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="noreferrer">aepd.es</a>).</p>
       </section>
 
       <section>
-        <h2>Quejas</h2>
-        <p>Si el usuario tiene alguna duda sobre nuestra gestión de su información personal, puede ponerse en contacto con nosotros a través de los métodos proporcionados en la aplicación TrainFit.</p>
+        <h2>8. Menores</h2>
+        <p>TrainFit no está dirigido a menores de 14 años. Si tienes menos de 14 años, no puedes registrarte sin el consentimiento de tus padres o tutores.</p>
       </section>
 
       <section>
-        <h2>Cambios en esta Política</h2>
-        <p>Podemos revisar esta Política de privacidad en cualquier momento y actualizaremos dicha Política con cualquier revisión. Si sigue utilizando TrainFit después de la entrada en vigor de estos cambios, el usuario reconoce y acepta que su información personal se puede gestionar de acuerdo con la Política de privacidad revisada.</p>
+        <h2>9. Seguridad</h2>
+        <p>Aplicamos medidas técnicas y organizativas para proteger tus datos: conexiones cifradas, contraseñas cifradas, accesos limitados por función y enlaces temporales para fotos y vídeos.</p>
+      </section>
+
+      <section>
+        <h2>10. Esta web</h2>
+        <p>Esta web no usa cookies de análisis ni de publicidad. El proveedor de alojamiento registra datos técnicos de las visitas (como la dirección IP) por seguridad.</p>
+      </section>
+
+      <section>
+        <h2>11. Cambios</h2>
+        <p>Si cambiamos esta política de forma relevante, te avisaremos en la aplicación o por correo antes de que se aplique.</p>
       </section>
     </article>
   </div>

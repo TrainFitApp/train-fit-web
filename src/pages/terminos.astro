@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { LEGAL, TRAINERS_TERMS_PATH } from '../data/site';
 ---
 
 <BaseLayout
@@ -9,15 +10,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <div class="legal-page">
     <header class="legal-header container">
-      <p class="eyebrow">Información legal</p>
       <h1>Términos y condiciones de TrainFit</h1>
+      <p class="legal-meta">Uso de la app TrainFit. La suscripción de TrainFit Trainers tiene sus propias <a href={TRAINERS_TERMS_PATH}>condiciones de contratación</a>.</p>
       <p class="legal-review-note" role="note">Documento pendiente de revisión legal</p>
     </header>
 
     <article class="legal-document container">
       <section>
-        <h2>1. Introducción Bienvenido a TrainFit.</h2>
-        <p>Estos Términos y Condiciones regulan el uso de nuestra Aplicación. Al acceder o usar nuestra Aplicación, usted acepta estar sujeto a estos Términos y Condiciones. Si tiene alguna pregunta, puede contactarnos en trainfitapp@gmail.com.</p>
+        <h2>1. Introducción</h2>
+        <p>Estos Términos y Condiciones regulan el uso de la aplicación TrainFit, cuyo titular es {LEGAL.holder} (datos completos en el <a href="/aviso-legal/">aviso legal</a>). Al acceder o usar la Aplicación, usted acepta estar sujeto a estos Términos y Condiciones. Si tiene alguna pregunta, puede contactarnos en <a href={`mailto:${LEGAL.supportEmail}`}>{LEGAL.supportEmail}</a>.</p>
       </section>
 
       <section>

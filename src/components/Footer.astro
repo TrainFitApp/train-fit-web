@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../data/site';
+import { SITE, TRAINERS_TERMS_PATH } from '../data/site';
 ---
 
 <footer class="footer">
@@ -28,7 +28,9 @@ import { SITE } from '../data/site';
     <nav aria-label="Legal">
       <p class="footer__label">Legal</p>
       <a href="/terminos/">Términos</a>
+      <a href={TRAINERS_TERMS_PATH}>Condiciones Trainers</a>
       <a href="/privacidad/">Privacidad</a>
+      <a href="/aviso-legal/">Aviso legal</a>
     </nav>
   </div>
   <div class="container footer__bottom">
