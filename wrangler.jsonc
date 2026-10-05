@@ -1,0 +1,25 @@
+// Web pública en Cloudflare Workers como estáticos puros (sin adaptador de
+// Astro). Cloudflare compila al hacer push y publica la carpeta dist.
+// Este fichero tiene que existir: sin él, wrangler intenta configurar el
+// proyecto solo e instala @astrojs/cloudflare, que no es compatible con
+// nuestra versión de Astro y rompe el build.
+//
+//   DEV: Worker train-fit-web-dev → https://dev.trainfit.net
+//        build:  npm run build
+//        deploy: npx wrangler deploy --env dev
+//   PRO: Worker train-fit-web     → https://trainfit.net (aún sin desplegar)
+//        build:  npm run build
+//        deploy: npx wrangler deploy
+{
+  "name": "train-fit-web",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "env": {
+    "dev": {
+      "name": "train-fit-web-dev"
+    }
+  }
+}
