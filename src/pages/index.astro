@@ -7,6 +7,26 @@ import { TRAINERS } from '../data/site';
 ---
 
 <BaseLayout title="TrainFit" description="Entrenamiento, nutrición y progreso en una sola app. Planifica, registra y entiende tu evolución con TrainFit." canonicalPath="/">
+  <script is:inline slot="head">
+    // Enlaces de la web anterior (una SPA con rutas «#/…»): siguen en versiones
+    // viejas de las apps, en las fichas de las tiendas y en correos ya enviados.
+    // El servidor nunca recibe lo que va tras «#», así que se resuelve aquí; lo
+    // que no tiene página nueva (las calculadoras) se queda en la home.
+    (() => {
+      const legacy = new Map([
+        ['/politicas', '/privacidad/'],
+        ['/terminosycondiciones', '/terminos/'],
+        ['/sobrenosotros', '/sobre-trainfit/'],
+        ['about', '/sobre-trainfit/'],
+        ['/faqs', '/faq/'],
+        ['/contacto', '/contacto/'],
+        ['/mas', '/descargar/'],
+      ]);
+      const route = location.hash.slice(1).split('?')[0].replace(/(.)\/+$/, '$1').toLowerCase();
+      const target = legacy.get(route);
+      if (target) location.replace(target);
+    })();
+  </script>
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__layout container">
       <div class="hero__copy">

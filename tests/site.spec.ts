@@ -104,6 +104,26 @@ test('calculadoras no forman parte del producto nuevo', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toContainText('no existe');
 });
 
+test('enlaces «#/…» de la web anterior llevan a su página nueva', async ({ page }) => {
+  const legacy: Record<string, string> = {
+    '/#/politicas': '/privacidad/',
+    '/#/terminosycondiciones': '/terminos/',
+    '/#/SobreNosotros': '/sobre-trainfit/',
+    '/#about': '/sobre-trainfit/',
+    '/#/FAQs': '/faq/',
+    '/#/contacto': '/contacto/',
+    '/#/Mas': '/descargar/',
+  };
+  for (const [from, to] of Object.entries(legacy)) {
+    // La redirección ocurre al cargar: esperar solo al commit evita que goto
+    // falle por la navegación que la interrumpe.
+    await page.goto(from, { waitUntil: 'commit' });
+    await expect(page).toHaveURL(new RegExp(`${to.replaceAll('/', '\\/')}$`));
+  }
+  await page.goto('/#/calculadoras');
+  await expect(page).toHaveURL(/\/#\/calculadoras$/);
+});
+
 test('reduced motion deja contenido visible', async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: 'reduce' });
   const page = await context.newPage();
