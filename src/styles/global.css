@@ -345,19 +345,13 @@ button {
   max-width: 50rem;
 }
 
+.legal-header { padding-block-end: 4rem; }
+
 .legal-header h1 {
   margin: 0;
   font-size: clamp(2.6rem, 6vw, 4.8rem);
   letter-spacing: -0.04em;
   line-height: 1;
-}
-
-.legal-review-note {
-  margin: 2rem 0 4rem;
-  padding: 1rem 1.25rem;
-  border-left: 2px solid var(--color-accent);
-  background: var(--color-surface);
-  color: var(--color-text-soft);
 }
 
 .legal-document section + section {

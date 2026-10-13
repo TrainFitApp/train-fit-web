@@ -73,7 +73,7 @@ test('entrenadores: capturas reales con título y siguiente paso', async ({ page
     await expect(figure.locator('figcaption b')).not.toBeEmpty();
     await expect(figure.locator('img')).toHaveAttribute('alt', /.+/);
   }
-  await expect(page.getByRole('link', { name: 'Solicitar acceso' }).first()).toHaveAttribute('href', /^mailto:suggestions@trainfit\.net\?subject=/);
+  await expect(page.getByRole('link', { name: 'Solicitar acceso' }).first()).toHaveAttribute('href', /^mailto:soporte@trainfit\.net\?subject=/);
   await expect(page.getByRole('link', { name: 'Ver la app de cliente' })).toHaveAttribute('href', '/descargar/');
 });
 

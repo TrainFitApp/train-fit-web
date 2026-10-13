@@ -15,16 +15,8 @@ export const SITE = {
   },
 } as const;
 
-// TrainFit Trainers es la herramienta de los profesionales (web aparte de la
-// app). Su dominio público aún no está configurado, así que el único recorrido
-// válido hoy es escribir a TrainFit: no se enlaza ni a registro ni a acceso.
-export const TRAINERS = {
-  name: 'TrainFit Trainers',
-  contactHref: `mailto:${SITE.email}?subject=${encodeURIComponent('Acceso a TrainFit Trainers')}`,
-} as const;
-
 // Titular del sitio y del servicio (LSSI art. 10, RGPD art. 13). Un solo sitio para estos datos:
-// las páginas legales los leen de aquí. Lo vacío se muestra como pendiente y NO debe publicarse así.
+// las páginas legales los leen de aquí. NIF y domicilio vacíos no se muestran; hay que rellenarlos antes del alta pública.
 export const LEGAL = {
   holder: 'David Argente',
   holderType: 'persona física',
@@ -34,6 +26,15 @@ export const LEGAL = {
   supportEmail: 'soporte@trainfit.net',
   // Cobros, facturas y reembolsos de la suscripción de TrainFit Trainers.
   billingEmail: 'facturacion@trainfit.net',
+} as const;
+
+// TrainFit Trainers es la herramienta de los profesionales (web aparte de la
+// app). Su dominio público aún no está configurado, así que el único recorrido
+// válido hoy es escribir a soporte: no se enlaza ni a registro ni a acceso.
+export const TRAINERS = {
+  name: 'TrainFit Trainers',
+  email: LEGAL.supportEmail,
+  contactHref: `mailto:${LEGAL.supportEmail}?subject=${encodeURIComponent('Acceso a TrainFit Trainers')}`,
 } as const;
 
 // Condiciones de contratación de TrainFit Trainers. Cada versión vive en su propia URL y no se
