@@ -75,7 +75,7 @@ const more = [
       <div class="pro-hero__aside">
         <p class="lede">La herramienta para entrenadores personales y nutricionistas: pautas rutinas y dietas, revisas check-ins y sigues la adherencia de cada cliente sin perseguirlo por WhatsApp ni rehacer el Excel.</p>
         <div class="pro-hero__actions">
-          <a class="button button--primary" href={TRAINERS.contactHref}>Solicitar acceso</a>
+          <a class="button button--primary" href={TRAINERS.loginUrl}>Entrar</a>
           <a class="button button--secondary" href="#funciones">Ver cómo funciona</a>
         </div>
       </div>
@@ -151,9 +151,9 @@ const more = [
     <div class="container pro-cta__grid">
       <h2 id="pro-cta-title">¿Trabajas con clientes?</h2>
       <div class="pro-cta__action">
-        <p>{TRAINERS.name} todavía no tiene alta pública. Escríbenos y te contamos cómo empezar.</p>
-        <a class="button button--primary" href={TRAINERS.contactHref}>Solicitar acceso</a>
-        <p class="pro-cta__client">¿No se abre tu correo? Escribe a <a href={`mailto:${TRAINERS.email}`}>{TRAINERS.email}</a>.</p>
+        <p>Entra a {TRAINERS.name} con tu cuenta de profesional.</p>
+        <a class="button button--primary" href={TRAINERS.loginUrl}>Entrar</a>
+        <p class="pro-cta__client">¿Dudas con el acceso? Escribe a <a href={`mailto:${TRAINERS.email}`}>{TRAINERS.email}</a>.</p>
         <p class="pro-cta__client">Planes, plazas y precios: <a href={TRAINERS_TERMS_PATH}>condiciones de contratación</a>.</p>
         <p class="pro-cta__client">¿Eres cliente de un entrenador? <a href="/descargar/">Descarga la app TrainFit</a>.</p>
       </div>

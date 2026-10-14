@@ -3,7 +3,7 @@ export const SITE = {
   origin: 'https://trainfit.net',
   description:
     'Entrenamiento, nutrición y progreso en una sola app. Planifica, registra y entiende tu evolución con TrainFit.',
-  email: 'suggestions@trainfit.net',
+  email: 'soporte@trainfit.net',
   appStore:
     'https://apps.apple.com/es/app/trainfit-gym-dieta-y-entreno/id6471257280',
   playStore:
@@ -29,12 +29,11 @@ export const LEGAL = {
 } as const;
 
 // TrainFit Trainers es la herramienta de los profesionales (web aparte de la
-// app). Su dominio público aún no está configurado, así que el único recorrido
-// válido hoy es escribir a soporte: no se enlaza ni a registro ni a acceso.
+// app). `loginUrl` es su acceso; `email` queda como alternativa si no tienen cuenta.
 export const TRAINERS = {
   name: 'TrainFit Trainers',
   email: LEGAL.supportEmail,
-  contactHref: `mailto:${LEGAL.supportEmail}?subject=${encodeURIComponent('Acceso a TrainFit Trainers')}`,
+  loginUrl: 'https://trainers.trainfit.net',
 } as const;
 
 // Condiciones de contratación de TrainFit Trainers. Cada versión vive en su propia URL y no se
